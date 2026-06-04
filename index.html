@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Fiction Laboratory</title>
+<meta name="description" content="A supplemental science curriculum built on science fiction. Discipline-tagged novels, structured reading packets, real science. In development." />
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="The Fiction Laboratory" />
+<meta property="og:description" content="Your students will read the book. The science comes with it." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:   #ffffff;
+    --ink:     #0d0d0d;
+    --ink-soft:#3a3a37;
+    --line:    #d9d7cd;
+
+    --cyan:   #00b8d4;
+    --green:  #5fb022;
+    --yellow: #ffc400;
+    --orange: #ff6b2c;
+
+    --serif: "Domine", Georgia, serif;
+    --display: "Domine", Georgia, serif;
+    --mono: "Roboto Mono", ui-monospace, monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* faint engineering grid + paper grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(13,13,13,.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+  }
+  body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  .wrap{
+    position:relative; z-index:1;
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 clamp(20px, 5vw, 64px);
+  }
+
+  /* crop marks in page corners (print nod) */
+  .crop{ position:fixed; width:18px; height:18px; z-index:2; pointer-events:none; }
+  .crop::before,.crop::after{ content:""; position:absolute; background:var(--ink); }
+  .crop::before{ width:100%; height:1.5px; top:50%; }
+  .crop::after{ width:1.5px; height:100%; left:50%; }
+  .crop.tl{ top:18px; left:18px; }
+  .crop.tr{ top:18px; right:18px; }
+  .crop.bl{ bottom:18px; left:18px; }
+  .crop.br{ bottom:18px; right:18px; }
+  @media (max-width:640px){ .crop{ display:none; } }
+
+  /* ---------- masthead ---------- */
+  header{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:34px 0 0;
+    font-family:var(--mono);
+    font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  header .right{ display:flex; align-items:center; gap:10px; }
+  .pulse{
+    width:7px; height:7px; border-radius:50%; background:var(--orange);
+    box-shadow:0 0 0 0 rgba(255,107,44,.6);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(255,107,44,.55); }
+    70%{ box-shadow:0 0 0 8px rgba(255,107,44,0); }
+    100%{ box-shadow:0 0 0 0 rgba(255,107,44,0); }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:clamp(48px, 11vh, 120px) 0 clamp(40px,7vh,72px); }
+
+  .kicker{
+    font-family:var(--mono);
+    font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--ink-soft); font-weight:600;
+    margin-bottom:26px;
+    display:inline-flex; align-items:center; gap:12px;
+  }
+  .kicker::before{ content:""; width:34px; height:1.5px; background:var(--ink); display:inline-block; }
+
+  h1{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(2.6rem, 7.4vw, 5.6rem);
+    line-height:.98;
+    letter-spacing:-.02em;
+  }
+  h1 .line{ display:block; overflow:hidden; }
+  h1 .line span{ display:block; }
+  h1 em{ font-style:italic; }
+  .ul{
+    position:relative; white-space:nowrap;
+  }
+  .ul::after{
+    content:""; position:absolute; left:0; right:0; bottom:.06em; height:.11em;
+    background:var(--cyan);
+    transform:scaleX(0); transform-origin:left;
+    animation:swipe .7s cubic-bezier(.2,.7,.2,1) 1.15s forwards;
+  }
+  @keyframes swipe{ to{ transform:scaleX(1); } }
+
+  .lede{
+    font-size:clamp(1.05rem, 1.7vw, 1.32rem);
+    line-height:1.62;
+    color:var(--ink-soft);
+    max-width:54ch;
+    margin-top:34px;
+  }
+  .lede strong{ color:var(--ink); font-weight:500; }
+
+  /* ---------- calibration strip (CMYK nod) ---------- */
+  .calib{
+    display:flex; align-items:stretch;
+    margin-top:46px;
+    border:1.5px solid var(--ink);
+    height:40px;
+  }
+  .calib .swatch{ flex:1; transform:scaleY(0); transform-origin:bottom; }
+  .calib .swatch:nth-child(1){ background:var(--cyan);   animation:grow .5s ease 1.3s forwards; }
+  .calib .swatch:nth-child(2){ background:var(--green);  animation:grow .5s ease 1.4s forwards; }
+  .calib .swatch:nth-child(3){ background:var(--yellow); animation:grow .5s ease 1.5s forwards; }
+  .calib .swatch:nth-child(4){ background:var(--orange); animation:grow .5s ease 1.6s forwards; }
+  .calib .swatch:nth-child(5){ background:var(--ink); flex:0 0 56px; animation:grow .5s ease 1.7s forwards; }
+  @keyframes grow{ to{ transform:scaleY(1); } }
+  .calib-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-soft); margin-top:9px; display:flex; justify-content:space-between;
+    font-weight:600;
+  }
+
+  /* ---------- in the lab ---------- */
+  .lab{ padding:clamp(36px,6vh,64px) 0 64px; }
+  .sec-head{
+    display:flex; align-items:baseline; gap:14px;
+    border-top:1.5px solid var(--ink);
+    padding-top:14px; margin-bottom:30px;
+  }
+  .sec-head h2{
+    font-family:var(--mono); font-weight:700;
+    font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+  }
+  .sec-head .free{
+    font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-soft); margin-left:auto; font-weight:600;
+  }
+
+  .specimens{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+  }
+  @media (max-width:720px){ .specimens{ grid-template-columns:1fr; } }
+
+  .card{
+    border:1.5px solid var(--ink);
+    background:var(--paper);
+    padding:22px 22px 24px;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+    --accent:var(--cyan);
+  }
+  .card:hover{ transform:translateY(-5px); box-shadow:7px 7px 0 var(--accent); }
+  .card .no{
+    font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-soft); display:flex; justify-content:space-between; font-weight:600;
+  }
+  .card .code{ color:var(--accent); font-weight:700; }
+  .card .title{
+    font-family:var(--display); font-weight:500; font-size:1.55rem; line-height:1.08;
+    margin:28px 0 6px; letter-spacing:-.01em;
+  }
+  .card .author{ font-size:.95rem; color:var(--ink-soft); font-style:italic; }
+  .card .disc{
+    margin-top:20px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+    font-weight:600;
+    display:inline-block; padding:4px 9px; border:1.2px solid var(--accent); color:var(--ink);
+  }
+
+  /* ---------- closing ---------- */
+  .closer{ padding:24px 0 0; }
+  .closer p{
+    font-family:var(--display); font-weight:400; font-style:italic;
+    font-size:clamp(1.3rem,3vw,2rem); line-height:1.25; max-width:24ch;
+    letter-spacing:-.01em;
+  }
+  .follow{ display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; }
+  .btn{
+    font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    font-weight:600;
+    text-decoration:none; color:var(--ink);
+    border:1.5px solid var(--ink); padding:13px 20px;
+    display:inline-flex; align-items:center; gap:9px;
+    transition:background .18s ease, color .18s ease;
+  }
+  .btn:hover{ background:var(--ink); color:var(--paper); }
+  .btn.go{ background:var(--orange); border-color:var(--orange); }
+  .btn.go:hover{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
+  .btn .arr{ transition:transform .18s ease; }
+  .btn:hover .arr{ transform:translateX(3px); }
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:clamp(60px,9vh,110px);
+    border-top:1.5px solid var(--ink);
+    padding:22px 0 56px;
+    display:flex; flex-wrap:wrap; gap:10px 24px; justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); font-weight:600;
+  }
+  footer .ethos{ color:var(--ink); }
+
+  /* ---------- load-in animation ---------- */
+  .rise{ opacity:0; transform:translateY(18px); animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  .d1{ animation-delay:.15s; } .d2{ animation-delay:.3s; } .d3{ animation-delay:.5s; }
+  .d4{ animation-delay:.7s; } .d5{ animation-delay:1.85s; } .d6{ animation-delay:2.0s; }
+  .d7{ animation-delay:2.15s; } .d8{ animation-delay:2.3s; }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
+
+  h1 .line span{ transform:translateY(102%); animation:up .85s cubic-bezier(.2,.75,.2,1) forwards; }
+  h1 .line:nth-child(1) span{ animation-delay:.35s; }
+  h1 .line:nth-child(2) span{ animation-delay:.5s; }
+  @keyframes up{ to{ transform:translateY(0); } }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; }
+    .rise{ opacity:1; transform:none; }
+    h1 .line span{ transform:none; }
+    .calib .swatch{ transform:scaleY(1); }
+    .ul::after{ transform:scaleX(1); }
+  }
+
+  /* ---------- subscribe section ---------- */
+  .subscribe{ padding:clamp(36px,6vh,64px) 0 0; }
+  .subscribe .sec-head{ margin-bottom:22px; }
+  .sub-label{
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--ink-soft); display:block; margin-bottom:14px; font-weight:600;
+  }
+  .contact-row{ margin-top:16px; }
+
+  /* ---------- Kit form overrides ---------- */
+  /* Strip all Kit defaults; preserve only submission logic */
+  .formkit-form[data-uid="f0780b3634"]{ max-width:100% !important; background:transparent !important; }
+  .formkit-form[data-uid="f0780b3634"] [data-style="clean"]{ padding:0 !important; width:100% !important; }
+  .formkit-form[data-uid="f0780b3634"] .formkit-fields{
+    display:flex !important; flex-wrap:nowrap !important;
+    gap:0 !important; margin:0 !important; max-width:560px;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-field{ flex:1 1 auto !important; margin:0 !important; }
+  .formkit-form[data-uid="f0780b3634"] .formkit-input{
+    background:var(--paper) !important;
+    border:1.5px solid var(--ink) !important; border-right:none !important;
+    border-radius:0 !important;
+    font-family:var(--mono) !important; font-size:12px !important;
+    letter-spacing:.06em !important; color:var(--ink) !important;
+    padding:13px 16px !important; width:100% !important; height:100% !important;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-input::placeholder{
+    color:var(--ink-soft) !important; opacity:1 !important;
+    text-transform:uppercase; letter-spacing:.1em;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-input:focus{
+    outline:none !important; border-color:var(--cyan) !important;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-submit{
+    flex:0 0 auto !important; margin:0 0 0 0 !important;
+    border-radius:0 !important;
+    background:var(--orange) !important; border:1.5px solid var(--orange) !important;
+    font-family:var(--mono) !important; font-size:12px !important;
+    letter-spacing:.12em !important; text-transform:uppercase !important;
+    color:var(--ink) !important; cursor:pointer !important;
+    transition:background .18s ease, border-color .18s ease, color .18s ease !important;
+    position:relative !important; overflow:hidden !important;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-submit:hover{
+    background:var(--ink) !important; border-color:var(--ink) !important;
+    color:var(--paper) !important;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-submit > span{ padding:13px 22px !important; }
+  .formkit-form[data-uid="f0780b3634"] .formkit-powered-by-convertkit-container{ display:none !important; }
+  .formkit-form[data-uid="f0780b3634"] .formkit-alert{
+    font-family:var(--mono) !important; font-size:11px !important; letter-spacing:.06em !important;
+    border-radius:0 !important; margin:10px 0 0 !important; padding:10px 14px !important;
+    max-width:560px;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-alert-success{
+    background:transparent !important; border-color:var(--green) !important; color:var(--green) !important;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-alert-error{
+    background:transparent !important; border-color:var(--orange) !important; color:var(--orange) !important;
+  }
+  /* spinner — keep functional, just recolor */
+  .formkit-form[data-uid="f0780b3634"] .formkit-spinner{ display:flex !important; }
+  .formkit-form[data-uid="f0780b3634"] .formkit-spinner > div{ background:#fff !important; }
+  @keyframes formkit-bouncedelay-formkit-form-data-uid-f0780b3634-{
+    0%,80%,100%{ transform:scale(0); } 40%{ transform:scale(1); }
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-spinner > div{
+    animation:formkit-bouncedelay-formkit-form-data-uid-f0780b3634- 1.4s infinite ease-in-out both;
+  }
+  .formkit-form[data-uid="f0780b3634"] .formkit-spinner > div:nth-child(1){ animation-delay:-.32s; }
+  .formkit-form[data-uid="f0780b3634"] .formkit-spinner > div:nth-child(2){ animation-delay:-.16s; }
+</style>
+<script src="https://f.convertkit.com/ckjs/ck.5.js" defer></script>
+</head>
+<body>
+  <span class="crop tl"></span><span class="crop tr"></span>
+  <span class="crop bl"></span><span class="crop br"></span>
+
+  <div class="wrap">
+
+    <header>
+      <div class="rise d1">The Fiction Laboratory &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; Chicago</div>
+      <div class="right rise d1"><span class="pulse"></span> In Development</div>
+    </header>
+
+    <section class="hero">
+      <div class="kicker rise d2">A Supplemental Science Curriculum</div>
+
+      <h1>
+        <span class="line"><span>Your students</span></span>
+        <span class="line"><span>will read the book.</span></span>
+      </h1>
+      <h1 style="margin-top:.12em">
+        <span class="ul">The <em>science</em></span> comes with it.
+      </h1>
+
+      <p class="lede rise d3">
+        A curated library of <strong>science fiction</strong> with the curriculum work already done.
+        Discipline-tagged novels, structured reading packets, and a reward system that gets students
+        engaged with real science. No new app. No subscription. Something a teacher reaches for,
+        not something they rebuild around.
+      </p>
+
+      <div class="calib rise d4">
+        <div class="swatch"></div>
+        <div class="swatch"></div>
+        <div class="swatch"></div>
+        <div class="swatch"></div>
+        <div class="swatch"></div>
+      </div>
+      <div class="calib-label rise d4">
+        <span>Biology · Physics · Computer Science · Earth · Social</span>
+        <span>Cal. 100A&ndash;500A</span>
+      </div>
+    </section>
+
+    <section class="lab">
+      <div class="sec-head rise d5">
+        <h2>Currently in the Lab</h2>
+        <span class="free">First titles · Free at launch</span>
+      </div>
+
+      <div class="specimens">
+        <article class="card rise d6" style="--accent:var(--cyan)">
+          <div class="no"><span>Specimen 01</span><span class="code">200A · 500A</span></div>
+          <h3 class="title">The Time Machine</h3>
+          <div class="author">H. G. Wells</div>
+          <span class="disc">Physical Sciences</span>
+        </article>
+
+        <article class="card rise d7" style="--accent:var(--green)">
+          <div class="no"><span>Specimen 02</span><span class="code">100A · 500A</span></div>
+          <h3 class="title">Frankenstein</h3>
+          <div class="author">Mary Shelley</div>
+          <span class="disc">Biological Sciences</span>
+        </article>
+
+        <article class="card rise d8" style="--accent:var(--orange)">
+          <div class="no"><span>Specimen 03</span><span class="code">200A · 500A</span></div>
+          <h3 class="title">Foundation</h3>
+          <div class="author">Isaac Asimov</div>
+          <span class="disc">Social Sciences</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="closer">
+      <p>Every science fiction novel is a thought experiment. We just file the lab report.</p>
+    </section>
+
+    <section class="subscribe">
+      <div class="sec-head rise d5">
+        <h2>Stay in the loop</h2>
+      </div>
+      <span class="sub-label">Get notified when we launch</span>
+
+      <!-- Kit subscribe form — styled to match, logic intact -->
+      <form action="https://app.kit.com/forms/9520884/subscriptions"
+            class="seva-form formkit-form"
+            method="post"
+            data-sv-form="9520884"
+            data-uid="f0780b3634"
+            data-format="inline"
+            data-version="5"
+            min-width="400 500 600 700 800">
+        <div data-style="clean">
+          <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+          <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+            <div class="formkit-field">
+              <input class="formkit-input"
+                     name="email_address"
+                     aria-label="Email Address"
+                     placeholder="your@email.com"
+                     required
+                     type="email" />
+            </div>
+            <button data-element="submit" class="formkit-submit">
+              <div class="formkit-spinner"><div></div><div></div><div></div></div>
+              <span>Notify me</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="contact-row">
+        <a class="btn" href="mailto:Inquiries@fictionlaboratory.com">Get in touch <span class="arr">→</span></a>
+      </div>
+    </section>
+
+    <footer>
+      <span class="ethos">Open a book. Open the lab.</span>
+      <span>© 2026 The Fiction Laboratory · No Amazon links, ever</span>
+    </footer>
+
+  </div>
+</body>
+</html>
