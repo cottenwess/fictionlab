@@ -24,7 +24,7 @@
 
     --cyan:   #00b8d4;
     --green:  #5fb022;
-    --yellow: #ffc400;
+    --yellow: #ffe000;
     --orange: #ff6b2c;
 
     --serif: "Domine", Georgia, serif;
@@ -81,7 +81,24 @@
   .crop.br{ bottom:18px; right:18px; }
   @media (max-width:640px){ .crop{ display:none; } }
 
-  /* ---------- masthead ---------- */
+  /* ---------- status banner ---------- */
+  .banner{
+    margin-top:18px;
+    border:1.5px solid var(--ink);
+    background:var(--yellow);
+    padding:11px 18px;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;
+    font-family:var(--mono); font-size:11px; font-weight:600;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--ink);
+  }
+  .banner a{
+    color:var(--ink); text-decoration:none;
+    border-bottom:1.5px solid var(--ink);
+    padding-bottom:1px;
+    transition:opacity .18s ease;
+    white-space:nowrap;
+  }
+  .banner a:hover{ opacity:.6; }
   header{
     display:flex; justify-content:space-between; align-items:center;
     padding:34px 0 0;
@@ -380,6 +397,11 @@
       </div>
     </section>
 
+    <div class="banner rise d5">
+      <span>Packets in development. The lab opens soon.</span>
+      <a href="#notify">Get notified at launch &darr;</a>
+    </div>
+
     <section class="lab">
       <div class="sec-head rise d5">
         <h2>Currently in the Lab</h2>
@@ -414,7 +436,7 @@
       <p>Every science fiction novel is a thought experiment. We just file the lab report.</p>
     </section>
 
-    <section class="subscribe">
+    <section class="subscribe" id="notify">
       <div class="sec-head rise d5">
         <h2>Stay in the loop</h2>
       </div>
