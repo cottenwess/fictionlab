@@ -6,16 +6,54 @@
 <title>The Fiction Laboratory</title>
 <meta name="description" content="A supplemental science curriculum built on science fiction. Discipline-tagged novels, structured reading packets, real science. In development." />
 
-<!-- Open Graph / social preview -->
+<!-- Open Graph / social preview.
+     og:image must be an absolute https URL. A relative path previews fine
+     locally and then silently produces nothing once live.
+     Width and height must match the file exactly.
+     Preview images are cached hard by every platform, so version the
+     filename on any revision rather than overwriting in place. -->
+<meta property="og:site_name" content="The Fiction Laboratory" />
 <meta property="og:title" content="The Fiction Laboratory" />
 <meta property="og:description" content="Your students will read the book. The science comes with it." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://fictionlaboratory.com/" />
+<meta property="og:image" content="https://fictionlaboratory.com/og-image-v1.png" />
+<meta property="og:image:secure_url" content="https://fictionlaboratory.com/og-image-v1.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="The Fiction Laboratory, a supplemental science curriculum. Your students will read the book. The science comes with it." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Fiction Laboratory" />
+<meta name="twitter:description" content="Your students will read the book. The science comes with it." />
+<meta name="twitter:image" content="https://fictionlaboratory.com/og-image-v1.png" />
+<meta name="twitter:image:alt" content="The Fiction Laboratory, a supplemental science curriculum. Your students will read the book. The science comes with it." />
+
+<link rel="canonical" href="https://fictionlaboratory.com/" />
 
 <style>
+  /* Self-hosted fonts. Nothing is requested from a third party, so no visitor
+     IP address ever reaches Google. Both files are variable fonts, so one file
+     per family covers every weight the page uses. The Roboto family that used
+     to load here was never referenced by any rule and has been dropped.
+     Domine is OFL 1.1, Roboto Mono is Apache 2.0. See fonts/LICENSES.md. */
+  @font-face{
+    font-family:"Domine";
+    font-style:normal;
+    font-weight:400 700;
+    font-display:swap;
+    src:url("fonts/domine-latin-variable.woff2") format("woff2");
+  }
+  @font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:100 700;
+    font-display:swap;
+    src:url("fonts/roboto-mono-latin-variable.woff2") format("woff2");
+  }
+
   :root{
     --paper:   #ffffff;
     --ink:     #0d0d0d;
@@ -260,6 +298,12 @@
     color:var(--ink-soft); font-weight:600;
   }
   footer .ethos{ color:var(--ink); }
+  footer a{
+    color:var(--ink); text-decoration:none;
+    border-bottom:1.5px solid var(--ink); padding-bottom:1px;
+    transition:opacity .18s ease;
+  }
+  footer a:hover{ opacity:.6; }
 
   /* ---------- load-in animation ---------- */
   .rise{ opacity:0; transform:translateY(18px); animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
@@ -289,6 +333,15 @@
     color:var(--ink-soft); display:block; margin-bottom:14px; font-weight:600;
   }
   .contact-row{ margin-top:16px; }
+
+  /* Consent notice at the point of collection, not buried in the footer. */
+  .privacy-note{
+    font-family:var(--mono); font-size:11px; line-height:1.7;
+    letter-spacing:.04em; color:var(--ink-soft); font-weight:600;
+    margin-top:14px; max-width:560px;
+  }
+  .privacy-note a{ color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--ink); }
+  .privacy-note a:hover{ opacity:.6; }
 
   /* ---------- Kit form overrides ---------- */
   /* Strip all Kit defaults; preserve only submission logic */
@@ -392,7 +445,7 @@
         <div class="swatch"></div>
       </div>
       <div class="calib-label rise d4">
-        <span>Biology · Physics · Computer Science · Earth · Social</span>
+        <span>Biology · Physics · Computer Science · Geoscience · Social</span>
         <span>Cal. 100A&ndash;500A</span>
       </div>
     </section>
@@ -424,7 +477,7 @@
         </article>
 
         <article class="card rise d8" style="--accent:var(--orange)">
-          <div class="no"><span>Specimen 03</span><span class="code">200A · 500A</span></div>
+          <div class="no"><span>Specimen 03</span><span class="code">500A · 200A</span></div>
           <h3 class="title">Foundation</h3>
           <div class="author">Isaac Asimov</div>
           <span class="disc">Social Sciences</span>
@@ -470,6 +523,12 @@
         </div>
       </form>
 
+      <p class="privacy-note">
+        One email address, used only to tell you when the packets are ready.
+        No tracking, nothing sold, leave any time.
+        <a href="/privacy.html">Privacy policy</a>
+      </p>
+
       <div class="contact-row">
         <a class="btn" href="mailto:Inquiries@fictionlaboratory.com">Get in touch <span class="arr">→</span></a>
       </div>
@@ -477,7 +536,7 @@
 
     <footer>
       <span class="ethos">Open a book. Open the lab.</span>
-      <span>© 2026 The Fiction Laboratory · No Amazon links, ever</span>
+      <span>© 2026 The Fiction Laboratory · <a href="/privacy.html">Privacy</a> · No Amazon links, ever</span>
     </footer>
 
   </div>
