@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Books | The Fiction Laboratory</title>
+<meta name="description" content="Every title in The Fiction Laboratory: where to find the book, the sources behind its packet, and any corrections posted since printing.">
+<style>
+@font-face{
+    font-family:"Domine";
+    font-style:normal;
+    font-weight:400 700;
+    font-display:swap;
+    src:url("../../fonts/domine-latin-variable.woff2") format("woff2");
+  }
+@font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:100 700;
+    font-display:swap;
+    src:url("../../fonts/roboto-mono-latin-variable.woff2") format("woff2");
+  }
+:root{
+    --paper:   #ffffff;
+    --ink:     #0d0d0d;
+    --ink-soft:#3a3a37;
+    --line:    #d9d7cd;
+
+    --cyan:   #00b8d4;
+    --green:  #5fb022;
+    --yellow: #ffe000;
+    --orange: #ff6b2c;
+
+    --serif: "Domine", Georgia, serif;
+    --display: "Domine", Georgia, serif;
+    --mono: "Roboto Mono", ui-monospace, monospace;
+  }
+*{box-sizing:border-box}
+body{margin:0;padding:2.5rem 1.25rem 4rem;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);line-height:1.6;font-size:1.0625rem}
+.wrap{max-width:44rem;margin:0 auto}
+a{color:inherit}
+.home{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
+  text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
+h1{font-family:var(--display);font-size:clamp(1.75rem,5vw,2.5rem);line-height:1.15;margin:1.75rem 0 .5rem}
+.lede{color:var(--ink-soft)}
+ul{list-style:none;margin:2rem 0 0;padding:0}
+li{margin:0 0 1rem}
+a.card{display:block;text-decoration:none;border:1px solid var(--line);border-left:4px solid var(--accent);
+  padding:1.125rem 1.25rem;transition:background .15s ease}
+a.card:hover,a.card:focus{background:var(--line)}
+a.card:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.no{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+h2{font-family:var(--display);font-size:1.375rem;margin:.25rem 0 .125rem}
+.byline{margin:0;font-size:.9375rem}
+.codes{font-family:var(--mono);font-size:.6875rem;letter-spacing:.05em;color:var(--ink-soft);margin:.5rem 0 0}
+.blurb{margin:.625rem 0 0;color:var(--ink-soft);font-size:.9375rem}
+footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
+  color:var(--ink-soft);font-size:.875rem}
+@media (prefers-color-scheme:dark){
+  body{background:#12120f;color:#f2f0e8}
+  a.card{border-color:#33322c}
+  a.card:hover,a.card:focus{background:#1e1e19}
+  footer{border-color:#33322c}
+  .lede,.codes,.blurb,.no,footer{color:#b8b5a8}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="/">The Fiction Laboratory</a>
+
+<h1>Books</h1>
+<p class="lede">Every title with a packet. Each page carries where to find the book, the full source list behind its packet with live links, and any correction posted since the packet was printed.</p>
+
+<ul>
+    <li>
+      <a class="card" href="/books/fl-01-0001/">
+        <span class="no">Specimen FL-01.0001</span>
+        <h2>The Time Machine</h2>
+        <p class="byline">H.G. Wells, 1895</p>
+        <p class="codes">100A Biological Sciences · 200A Physical Sciences · 500A Social Sciences · 103A Biological Ecology · 201A Astronomy · 401A Geology · 501A Political Science</p>
+        <p class="blurb">A Victorian scientist known only as the Time Traveller builds a machine that carries him along the fourth dimension into the far future.</p>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="/books/fl-01-0004/">
+        <span class="no">Specimen FL-01.0004</span>
+        <h2>All Systems Red</h2>
+        <p class="byline">Martha Wells, 2017</p>
+        <p class="codes">100A Biological Sciences · 300A Computer Science · 500A Social Sciences · 301A Robotics</p>
+        <p class="blurb">A SecUnit is a security construct, part cloned tissue and part machine, rented out by the Company along with the rest of the equipment.</p>
+      </a>
+    </li>
+</ul>
+
+<footer>
+  <p>Borrowing comes first: your library, or Libby with a library card. To own a book, Bookshop.org sends the money to independent bookstores.</p>
+  <p>Last updated 2026-08-07.</p>
+</footer>
+</div>
+</body>
+</html>
