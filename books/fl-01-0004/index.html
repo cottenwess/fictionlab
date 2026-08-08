@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>All Systems Red | The Fiction Laboratory</title>
-<meta name="description" content="Where to find All Systems Red, the full source list for its Fiction Laboratory packet, and any corrections posted since printing.">
+<meta name="description" content="Where to find All Systems Red, the sources behind its Fiction Laboratory packet, and any corrections posted since printing.">
 <style>
 @font-face{
     font-family:"Domine";
@@ -35,60 +35,117 @@
     --display: "Domine", Georgia, serif;
     --mono: "Roboto Mono", ui-monospace, monospace;
   }
+body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(13,13,13,.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+  }
+body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
 *{box-sizing:border-box}
-body{margin:0;padding:2.5rem 1.25rem 4rem;background:var(--paper);color:var(--ink);
-  font-family:var(--serif);line-height:1.6;font-size:1.0625rem}
-.wrap{max-width:44rem;margin:0 auto}
-a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);
-  text-underline-offset:2px;text-decoration-thickness:2px}
-a:hover,a:focus{background:var(--accent);text-decoration:none}
-a:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-.home{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
-  text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
-h1{font-family:var(--display);font-size:clamp(1.75rem,5vw,2.5rem);line-height:1.15;margin:1.75rem 0 .25rem}
-h2{font-family:var(--display);font-size:1.375rem;margin:2.75rem 0 .5rem;
-  padding-top:1.25rem;border-top:1px solid var(--line)}
-h3{font-family:var(--mono);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-soft);margin:2rem 0 .75rem}
-.byline{margin:0 0 .25rem;font-size:1.125rem}
-.kicker{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-soft);margin:0}
-.lede{color:var(--ink-soft)}
-.codes{font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;color:var(--ink-soft);margin:.5rem 0 1.25rem}
-.summary{margin:1.25rem 0;padding-left:1rem;border-left:3px solid var(--accent)}
-ul.sources{list-style:none;margin:0;padding:0}
-ul.sources li{margin:0 0 1.5rem;padding-left:1rem;border-left:3px solid var(--line)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--orange)}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 0}
+.col{max-width:62ch}
+a{color:var(--ink)}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px;transition:opacity .18s ease}
+header a:hover{opacity:.6}
+header nav{display:flex;gap:18px}
+header nav a{border-bottom:1.5px solid var(--ink)}
+header nav a[aria-current]{border-bottom-color:var(--accent);border-bottom-width:3px}
+header a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+.kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
+.kicker::before{content:"";width:34px;height:1.5px;background:var(--accent)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:0}
+.byline{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin:.5rem 0 0}
+
+dl.codes{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:26px 0 0;
+  border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:14px 0}
+dl.codes dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);padding-top:3px}
+dl.codes dd{margin:0;font-family:var(--mono);font-size:12px;line-height:1.5}
+dl.codes .code{color:var(--accent);font-weight:700}
+
+.summary{font-size:1.08rem;margin:26px 0 0}
+.lede{color:var(--ink-soft);max-width:62ch}
+
+section{margin-top:clamp(48px,7vh,78px)}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-top:1.5px solid var(--ink);
+  padding-top:14px;margin-bottom:26px}
+.sec-head h2{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;margin:0}
+.sec-head .count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-left:auto}
+h3{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);margin:34px 0 14px}
+
+ul.sources{list-style:none;margin:0;padding:0;max-width:70ch}
+ul.sources li{border-left:1.5px solid var(--ink);padding:2px 0 2px 18px;margin:0 0 22px;
+  transition:border-color .18s ease}
 ul.sources li:hover{border-left-color:var(--accent)}
 p.cite{margin:0}
-p.note{margin:.375rem 0 0;color:var(--ink-soft);font-size:.9375rem}
-footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
-  color:var(--ink-soft);font-size:.875rem}
-@media (prefers-color-scheme:dark){
-  body{background:#12120f;color:#f2f0e8}
-  a{color:#f2f0e8}
-  a:hover,a:focus{color:#12120f}
-  h2,footer{border-color:#33322c}
-  ul.sources li{border-left-color:#33322c}
-  .lede,p.note,.kicker,h3,footer{color:#b8b5a8}
-}
+p.note{margin:.4rem 0 0;color:var(--ink-soft);font-size:.94rem}
+ul.downloads li{border-left-color:var(--accent)}
+a.dl{font-family:var(--mono);font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:2px}
+a[href^="http"],a[href^="/"]{text-decoration:none;border-bottom:1.5px solid var(--accent);
+  padding-bottom:1px;transition:opacity .18s ease}
+a[href^="http"]:hover,a[href^="/"]:hover{opacity:.6}
+
+footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
+  padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+footer .ethos{color:var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+footer a:hover{opacity:.6}
+.stamp{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:30px}
+@media (max-width:640px){dl.codes{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a class="home" href="/">The Fiction Laboratory</a>
+<header>
+  <a class="wordmark" href="/">The Fiction Laboratory</a>
+  <nav>
+    <a href="/books/" aria-current="page">Books</a>
+    <a href="/#notify">Get notified</a>
+  </nav>
+</header>
 
+<p class="kicker">Specimen FL-01.0004</p>
 <h1>All Systems Red</h1>
 <p class="byline">Martha Wells, 2017</p>
-<p class="kicker">Specimen FL-01.0004</p>
 
+<dl class="codes">
+  <dt>Primary</dt>
+  <dd><span class="code">100A</span> Biological Sciences · <span class="code">300A</span> Computer Science · <span class="code">500A</span> Social Sciences</dd>
+  <dt>Focused</dt>
+  <dd><span class="code">301A</span> Robotics</dd>
+</dl>
+
+<div class="col">
 <p class="summary">A SecUnit is a security construct, part cloned tissue and part machine, rented out by the Company along with the rest of the equipment. This one has quietly hacked the governor module meant to compel its obedience, hides the fact because discovery would mean being scrapped, calls itself Murderbot in private, and would rather watch serialized drama than talk to any human alive. Assigned to guard a small planetary survey team, it finds sections deleted from their hazard maps, equipment failing in ways equipment should not, and the other survey group on the planet dead: a rival company is erasing the witnesses to an illegal operation. Murderbot is badly damaged keeping its clients alive, giving up more of its concealed autonomy than it wants to. Offered a place at the end among people who have begun treating it as a person rather than as inventory, it leaves anyway.</p>
-
-<p class="codes">100A Biological Sciences · 300A Computer Science · 500A Social Sciences · 301A Robotics</p>
-
 <p class="lede">The Fiction Laboratory pairs science fiction novels with structured reading packets for science and English classes. This is the companion page for this title: where to find the book, every source behind its packet with live links, and any correction made since the packet was printed.</p>
+</div>
 
 <section>
-  <h2>Where to find the book</h2>
+  <div class="sec-head"><h2>Where to find the book</h2></div>
     <h3>Borrow it free</h3>
     <ul class="sources">
       <li>
@@ -125,7 +182,7 @@ footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
 </section>
 
 <section>
-  <h2>Sources</h2>
+  <div class="sec-head"><h2>Sources</h2><span class="count">21 in total</span></div>
   <p class="lede">Everything in the packet is built on real research, and most of it is free. If a claim sparks a question, go to the source and check it yourself. That is the whole idea.</p>
     <h3>Start here</h3>
     <ul class="sources">
@@ -226,19 +283,33 @@ footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
 </section>
 
 <section>
-  <h2>Updates and corrections</h2>
+  <div class="sec-head"><h2>Updates and corrections</h2></div>
+  <div class="col">
     <p class="lede">Nothing yet. When a link here dies or a finding is superseded, the correction is posted here rather than left wrong in print.</p>
+  </div>
 </section>
+
 
 <section>
-  <h2>The packet</h2>
-  <p class="lede">Six sections: author biography, historical context, the allegorical reading, the science (including an accuracy audit and a look at what the book influenced), a three-variant quiz with an answer guide, and a 45-minute discussion guide a teacher can run without having read the book. Packets are in development and free at launch. <a href="/#notify">Get notified</a>.</p>
+  <div class="sec-head"><h2>The packet</h2></div>
+  <ul class="sources downloads">
+      <li>
+        <a class="dl" href="/packets/fl-01-0004-complete.zip">Download the complete packet</a>
+        <p class="note">All eight documents: specimen record, both introductions, the reading companion, sources, three quiz variants, the answer guide, and the discussion guide. Free, no email required.</p>
+      </li>
+      <li>
+        <a class="dl" href="/packets/fl-01-0004-student.zip">Download the student set only</a>
+        <p class="note">Specimen record, student introduction, the reading companion, and the source list. This is what goes home with the book, without the quiz or the answer key.</p>
+      </li>
+  </ul>
 </section>
 
-<footer>
-  <p>Borrowing comes first: your library, or Libby with a library card. To own a book, Bookshop.org sends the money to independent bookstores.</p>
-  <p>Last reviewed 2026-08-07. Specimen FL-01.0004, The Fiction Laboratory.</p>
-</footer>
+<p class="stamp">Last reviewed 2026-08-07 &middot; Specimen FL-01.0004</p>
 </div>
+
+<footer>
+  <span class="ethos">Open a book. Open the lab.</span>
+  <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
+</footer>
 </body>
 </html>

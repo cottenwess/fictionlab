@@ -35,69 +35,97 @@
     --display: "Domine", Georgia, serif;
     --mono: "Roboto Mono", ui-monospace, monospace;
   }
+body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(13,13,13,.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+  }
+body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
 *{box-sizing:border-box}
-body{margin:0;padding:2.5rem 1.25rem 4rem;background:var(--paper);color:var(--ink);
-  font-family:var(--serif);line-height:1.6;font-size:1.0625rem}
-.wrap{max-width:44rem;margin:0 auto}
-a{color:inherit}
-.home{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
-  text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
-h1{font-family:var(--display);font-size:clamp(1.75rem,5vw,2.5rem);line-height:1.15;margin:1.75rem 0 .5rem}
-.lede{color:var(--ink-soft)}
-ul{list-style:none;margin:2rem 0 0;padding:0}
-li{margin:0 0 1rem}
-a.card{display:block;text-decoration:none;border:1px solid var(--line);border-left:4px solid var(--accent);
-  padding:1.125rem 1.25rem;transition:background .15s ease}
-a.card:hover,a.card:focus{background:var(--line)}
-a.card:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
-.no{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-h2{font-family:var(--display);font-size:1.375rem;margin:.25rem 0 .125rem}
-.byline{margin:0;font-size:.9375rem}
-.codes{font-family:var(--mono);font-size:.6875rem;letter-spacing:.05em;color:var(--ink-soft);margin:.5rem 0 0}
-.blurb{margin:.625rem 0 0;color:var(--ink-soft);font-size:.9375rem}
-footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);
-  color:var(--ink-soft);font-size:.875rem}
-@media (prefers-color-scheme:dark){
-  body{background:#12120f;color:#f2f0e8}
-  a.card{border-color:#33322c}
-  a.card:hover,a.card:focus{background:#1e1e19}
-  footer{border-color:#33322c}
-  .lede,.codes,.blurb,.no,footer{color:#b8b5a8}
-}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--cyan)}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+header a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px;transition:opacity .18s ease}
+header a:hover{opacity:.6}
+header nav{display:flex;gap:18px}
+header nav a{border-bottom:1.5px solid var(--ink)}
+header nav a[aria-current]{border-bottom-color:var(--accent);border-bottom-width:3px}
+header a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
+.kicker::before{content:"";width:34px;height:1.5px;background:var(--ink)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:0}
+.lede{color:var(--ink-soft);max-width:56ch;margin-top:20px}
+ul{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+li{margin:0}
+a.card{display:block;height:100%;text-decoration:none;color:inherit;border:1.5px solid var(--ink);
+  background:var(--paper);padding:22px 22px 24px;transition:transform .25s ease, box-shadow .25s ease}
+a.card:hover{transform:translateY(-5px);box-shadow:7px 7px 0 var(--accent)}
+a.card:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.no{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);display:flex;justify-content:space-between;gap:10px}
+.no .code{color:var(--accent);font-weight:700}
+h2.title{font-family:var(--display);font-weight:500;font-size:1.55rem;line-height:1.08;margin:18px 0 6px}
+.author{font-size:.95rem;color:var(--ink-soft);font-style:italic}
+.blurb{margin:16px 0 0;color:var(--ink-soft);font-size:.94rem;line-height:1.5}
+footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
+  padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+footer .ethos{color:var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+footer a:hover{opacity:.6}
 </style>
 </head>
 <body>
 <div class="wrap">
-<a class="home" href="/">The Fiction Laboratory</a>
+<header>
+  <a class="wordmark" href="/">The Fiction Laboratory</a>
+  <nav>
+    <a href="/books/" aria-current="page">Books</a>
+    <a href="/#notify">Get notified</a>
+  </nav>
+</header>
 
+<p class="kicker">The catalog</p>
 <h1>Books</h1>
 <p class="lede">Every title with a packet. Each page carries where to find the book, the full source list behind its packet with live links, and any correction posted since the packet was printed.</p>
 
 <ul>
     <li>
-      <a class="card" href="/books/fl-01-0001/">
-        <span class="no">Specimen FL-01.0001</span>
-        <h2>The Time Machine</h2>
-        <p class="byline">H.G. Wells, 1895</p>
-        <p class="codes">100A Biological Sciences · 200A Physical Sciences · 500A Social Sciences · 103A Biological Ecology · 201A Astronomy · 401A Geology · 501A Political Science</p>
+      <a class="card" href="/books/fl-01-0001/" style="--accent:var(--cyan)">
+        <div class="no"><span>Specimen 0001</span><span class="code">100A</span></div>
+        <h2 class="title">The Time Machine</h2>
+        <div class="author">H.G. Wells, 1895</div>
         <p class="blurb">A Victorian scientist known only as the Time Traveller builds a machine that carries him along the fourth dimension into the far future.</p>
       </a>
     </li>
     <li>
-      <a class="card" href="/books/fl-01-0004/">
-        <span class="no">Specimen FL-01.0004</span>
-        <h2>All Systems Red</h2>
-        <p class="byline">Martha Wells, 2017</p>
-        <p class="codes">100A Biological Sciences · 300A Computer Science · 500A Social Sciences · 301A Robotics</p>
+      <a class="card" href="/books/fl-01-0004/" style="--accent:var(--orange)">
+        <div class="no"><span>Specimen 0004</span><span class="code">100A</span></div>
+        <h2 class="title">All Systems Red</h2>
+        <div class="author">Martha Wells, 2017</div>
         <p class="blurb">A SecUnit is a security construct, part cloned tissue and part machine, rented out by the Company along with the rest of the equipment.</p>
       </a>
     </li>
 </ul>
+</div>
 
 <footer>
-  <p>Borrowing comes first: your library, or Libby with a library card. To own a book, Bookshop.org sends the money to independent bookstores.</p>
-  <p>Last updated 2026-08-07.</p>
+  <span class="ethos">Open a book. Open the lab.</span>
+  <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
 </footer>
-</div>
 </body>
 </html>
