@@ -255,9 +255,28 @@
     --accent:var(--cyan);
   }
   .card:hover{ transform:translateY(-5px); box-shadow:7px 7px 0 var(--accent); }
-  /* Titles with a book page are links; the rest stay plain articles. */
-  a.card{ display:block; color:inherit; text-decoration:none; }
-  a.card:focus-visible{ outline:3px solid var(--ink); outline-offset:3px; }
+  /* A card with a packet holds two targets: the whole card opens the book
+     page, and the download link sits above it. The title's ::after covers the
+     card so the click area stays what it looks like, which nesting one anchor
+     inside another could not do legally. */
+  .card .title a{ color:inherit; text-decoration:none; }
+  .card .title a::after{ content:""; position:absolute; inset:0; z-index:1; }
+  .card .dl{
+    position:relative; z-index:2; display:inline-block; margin-top:14px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    font-weight:700; color:var(--ink); text-decoration:none;
+    border-bottom:2px solid var(--accent); padding-bottom:2px;
+  }
+  .card .dl:hover{ opacity:.6; }
+  .kit-sec{ margin-top:clamp(46px,7vh,80px); }
+  .kit{ display:grid; grid-template-columns:repeat(auto-fit,minmax(258px,1fr)); gap:20px 30px; }
+  .kit div{ border-top:1.5px solid var(--ink); padding-top:12px; }
+  .kit h3{ font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+    font-weight:700; color:var(--ink); margin-bottom:7px; }
+  .kit p{ font-size:.94rem; line-height:1.55; color:var(--ink-soft); }
+  .kit em{ font-style:italic; color:var(--ink); }
+  .kit-note{ margin-top:26px; font-family:var(--display); font-size:1.05rem; color:var(--ink-soft); max-width:60ch; }
+  .card a:focus-visible{ outline:3px solid var(--ink); outline-offset:3px; }
   .card .status{ display:block; margin-top:10px; font-family:var(--mono); font-size:10px;
     letter-spacing:.16em; text-transform:uppercase; font-weight:600; color:var(--ink-soft); }
   .card .status.done{ color:var(--ink); }
@@ -477,13 +496,14 @@
       </div>
 
       <div class="specimens">
-        <a class="card rise d6" href="/books/fl-01-0001/" style="--accent:var(--cyan)">
+        <article class="card rise d6" style="--accent:var(--cyan)">
           <div class="no"><span>Specimen 01</span><span class="code">200A · 500A</span></div>
-          <h3 class="title">The Time Machine</h3>
+          <h3 class="title"><a href="/books/fl-01-0001/">The Time Machine</a></h3>
           <div class="author">H. G. Wells</div>
           <span class="disc">Physical Sciences</span>
-          <span class="status done">Packet complete &rarr;</span>
-        </a>
+          <span class="status done">Packet complete</span>
+          <a class="dl" href="/packets/fl-01-0001-complete.zip" download>Download packet &middot; 3.8 MB</a>
+        </article>
 
         <article class="card rise d7" style="--accent:var(--green)">
           <div class="no"><span>Specimen 02</span><span class="code">100A · 500A</span></div>
@@ -493,14 +513,33 @@
           <span class="status">In development</span>
         </article>
 
-        <a class="card rise d8" href="/books/fl-01-0004/" style="--accent:var(--orange)">
+        <article class="card rise d8" style="--accent:var(--orange)">
           <div class="no"><span>Specimen 04</span><span class="code">300A · 100A · 500A</span></div>
-          <h3 class="title">All Systems Red</h3>
+          <h3 class="title"><a href="/books/fl-01-0004/">All Systems Red</a></h3>
           <div class="author">Martha Wells</div>
           <span class="disc">Computer Science</span>
-          <span class="status done">Packet complete &rarr;</span>
-        </a>
+          <span class="status done">Packet complete</span>
+          <a class="dl" href="/packets/fl-01-0004-complete.zip" download>Download packet &middot; 4.1 MB</a>
+        </article>
       </div>
+    </section>
+
+    <section class="lab kit-sec">
+      <div class="sec-head rise d5">
+        <h2>What's in a packet</h2>
+        <span class="free">Eight documents &middot; Every title</span>
+      </div>
+      <div class="kit">
+        <div><h3>01 &middot; Specimen record</h3><p>The catalog entry. Title, author, year, discipline codes, and a plot summary, on one page.</p></div>
+        <div><h3>02 &middot; Instructor introduction</h3><p>What the packet contains and how to run it, including anything to know before the class meets the book.</p></div>
+        <div><h3>03 &middot; Student introduction</h3><p>The one page a student reads first, explaining what they are being asked to do and why.</p></div>
+        <div><h3>04 &middot; Sources</h3><p>The research the packet is built on, in MLA style, most of it free to read.</p></div>
+        <div><h3>05 &middot; Reading companion</h3><p>Four sections, roughly a thousand words each: the author, the moment the book was written into, what the story is really about, and the science. The science carries two audits, <em>The Lawbreaker</em> for where the book breaks the rules and <em>The Long Fuse</em> for what it set in motion in the real world.</p></div>
+        <div><h3>06 &middot; Quiz, three variants</h3><p>The multiple choice differs across A, B, and C so answers cannot be traded. The short answers stay the same, so one rubric covers the class.</p></div>
+        <div><h3>07 &middot; Answer guide</h3><p>Keys for all three variants, plus model responses and grading notes for the short answers.</p></div>
+        <div><h3>08 &middot; Discussion guide</h3><p>A 45-minute session, built to be run by a teacher who has not read the book. Every question carries facilitation notes and a text anchor.</p></div>
+      </div>
+      <p class="kit-note rise d6">Every title in the Core Library gets the same eight, whatever the book. Two are finished and free to download. The rest are in the lab.</p>
     </section>
 
     <section class="closer">
