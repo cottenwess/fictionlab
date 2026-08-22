@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frankenstein; or, The Modern Prometheus | The Fiction Laboratory</title>
+<meta name="description" content="Where to find Frankenstein; or, The Modern Prometheus, the sources behind its Fiction Laboratory packet, and any corrections posted since printing.">
+<style>
+@font-face{
+    font-family:"Domine";
+    font-style:normal;
+    font-weight:400 700;
+    font-display:swap;
+    src:url("../../fonts/domine-latin-variable.woff2") format("woff2");
+  }
+@font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:100 700;
+    font-display:swap;
+    src:url("../../fonts/roboto-mono-latin-variable.woff2") format("woff2");
+  }
+:root{
+    --paper:   #ffffff;
+    --ink:     #0d0d0d;
+    --ink-soft:#3a3a37;
+    --line:    #d9d7cd;
+
+    --cyan:   #00b8d4;
+    --green:  #5fb022;
+    --yellow: #ffe000;
+    --orange: #ff6b2c;
+
+    --serif: "Domine", Georgia, serif;
+    --display: "Domine", Georgia, serif;
+    --mono: "Roboto Mono", ui-monospace, monospace;
+  }
+body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(13,13,13,.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+  }
+body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--green)}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 0}
+.col{max-width:62ch}
+a{color:var(--ink)}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px;transition:opacity .18s ease}
+header a:hover{opacity:.6}
+header nav{display:flex;gap:18px}
+header nav a{border-bottom:1.5px solid var(--ink)}
+header nav a[aria-current]{border-bottom-color:var(--accent);border-bottom-width:3px}
+header a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+.kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
+.kicker::before{content:"";width:34px;height:1.5px;background:var(--accent)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:0}
+.byline{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin:.5rem 0 0}
+
+dl.codes{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:26px 0 0;
+  border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:14px 0}
+dl.codes dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);padding-top:3px}
+dl.codes dd{margin:0;font-family:var(--mono);font-size:12px;line-height:1.5}
+dl.codes .code{color:var(--accent);font-weight:700}
+
+.summary{font-size:1.08rem;margin:26px 0 0}
+.lede{color:var(--ink-soft);max-width:62ch}
+
+section{margin-top:clamp(48px,7vh,78px)}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-top:1.5px solid var(--ink);
+  padding-top:14px;margin-bottom:26px}
+.sec-head h2{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;margin:0}
+.sec-head .count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-left:auto}
+h3{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);margin:34px 0 14px}
+
+ul.sources{list-style:none;margin:0;padding:0;max-width:70ch}
+ul.sources li{border-left:1.5px solid var(--ink);padding:2px 0 2px 18px;margin:0 0 22px;
+  transition:border-color .18s ease}
+ul.sources li:hover{border-left-color:var(--accent)}
+p.cite{margin:0}
+p.note{margin:.4rem 0 0;color:var(--ink-soft);font-size:.94rem}
+ul.downloads li{border-left-color:var(--accent)}
+a.dl{font-family:var(--mono);font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:2px}
+a[href^="http"],a[href^="/"]{text-decoration:none;border-bottom:1.5px solid var(--accent);
+  padding-bottom:1px;transition:opacity .18s ease}
+a[href^="http"]:hover,a[href^="/"]:hover{opacity:.6}
+
+footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
+  padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+footer .ethos{color:var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+footer a:hover{opacity:.6}
+.stamp{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:30px}
+@media (max-width:640px){dl.codes{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="wordmark" href="/">The Fiction Laboratory</a>
+  <nav>
+    <a href="/books/" aria-current="page">Books</a>
+    <a href="/#notify">Get notified</a>
+  </nav>
+</header>
+
+<p class="kicker">Specimen FL-01.0002</p>
+<h1>Frankenstein; or, The Modern Prometheus</h1>
+<p class="byline">Mary Shelley. Published anonymously; her name first appeared on the 1823 edition, 1818</p>
+
+<dl class="codes">
+  <dt>Primary</dt>
+  <dd><span class="code">100A</span> Biological Sciences · <span class="code">500A</span> Social Sciences</dd>
+  <dt>Focused</dt>
+  <dd><span class="code">104A</span> Medicine · <span class="code">105A</span> Neuroscience</dd>
+</dl>
+
+<div class="col">
+<p class="summary">An English explorer named Robert Walton, pushing north through the Arctic ice in search of a passage, pulls a dying man from a floe and writes down his story. The man is Victor Frankenstein, a Genevan student who went to university at Ingolstadt, learned everything the natural philosophers of his day could teach him, and then spent two years assembling a human body from the dissecting room and the charnel house. On a November night he brings it to life, looks at what he has made, and runs. The creature is left to raise itself. Hidden beside a poor family&#x27;s cottage, it teaches itself to speak and read, understands what it is, and comes back to ask its maker for one thing: a companion made like itself. Victor agrees, then destroys her half-finished, and the creature answers by taking everyone Victor loves, one at a time. The chase runs north into the ice, where the story began. The last word belongs to the creature, standing over the body of the man who would not look at him.</p>
+<p class="lede">The Fiction Laboratory pairs science fiction novels with structured reading packets for science and English classes. This is the companion page for this title: where to find the book, every source behind its packet with live links, and any correction made since the packet was printed.</p>
+</div>
+
+<section>
+  <div class="sec-head"><h2>Where to find the book</h2></div>
+    <h3>Read free, legally</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Project Gutenberg, the 1818 first edition.</strong> <a href="https://gutenberg.org/ebooks/41445">gutenberg.org/ebooks/41445</a>. This is the text the packet quotes throughout, free and complete, in every format a reader might want. Start here.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Project Gutenberg, the 1831 revision.</strong> <a href="https://gutenberg.org/ebooks/42324">gutenberg.org/ebooks/42324</a>. The later text, also free. Worth having open beside the first edition if you want to see what thirteen years and three dead children did to the book.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Open Library.</strong> <a href="https://openlibrary.org">openlibrary.org</a>. Scans of many printed editions, borrowable an hour at a time, useful if you want a particular scholarly edition with its introduction and notes.</p>
+      </li>
+    </ul>
+    <h3>One thing to check first</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Which edition are you holding?</strong> Mary Shelley published <em>Frankenstein</em> in 1818 and revised it substantially in 1831, and the differences are not cosmetic. In the 1831 text Elizabeth stops being Victor&#x27;s cousin and becomes an unrelated foundling, and a heavy vocabulary of destiny is threaded through Victor&#x27;s account, so a man who made a series of choices starts to read as a man overtaken by forces. This packet uses 1818. Most cheap paperbacks and most classroom sets are 1831, and they rarely say so on the cover. Check the copyright page or the introduction before you assign it.</p>
+      </li>
+    </ul>
+    <h3>Borrow it free</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Your public library.</strong> Search the catalog or ask at the desk. This is one of the most widely held novels in English; if the branch does not have a copy on the shelf, it can get one.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Libby.</strong> <a href="https://libbyapp.com">libbyapp.com</a>. Library ebooks and audiobooks on a phone or tablet, free with a library card. Several audiobook recordings circulate; check which text a given recording follows if the edition matters to you.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Your school library.</strong> Almost certainly already there, often in a classroom set. Worth asking which edition the set is before you plan around it.</p>
+      </li>
+    </ul>
+    <h3>Buy it</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>B<a href="https://ookshop.org">ookshop.org</a>.</strong> <a href="https://bookshop.org">bookshop.org</a>. Orders send the money to independent bookstores rather than to a warehouse. If you want a printed 1818 text, the Broadview, Oxford World&#x27;s Classics, and Norton Critical editions all print it; check the edition before ordering, since many paperbacks are 1831.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Your local bookshop.</strong> Any independent store can order a specific edition, which for this title is the whole game.</p>
+      </li>
+    </ul>
+    <h3>Keep reading</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>John Milton, <em>Paradise Lost</em>.</strong> <a href="https://gutenberg.org/ebooks/26">gutenberg.org/ebooks/26</a>. Free. The novel&#x27;s epigraph, and the book the creature finds and reads inside the story. His case against Victor is built out of it.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Mary Wollstonecraft, <em>A Vindication of the Rights of Woman</em>.</strong> <a href="https://gutenberg.org/ebooks/3420">gutenberg.org/ebooks/3420</a>. Free. Her mother, five years before her birth, arguing that women are reasoning creatures kept deliberately ignorant.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>William Godwin, <em>An Enquiry Concerning Political Justice</em>.</strong> Free through Project Gutenberg and the Internet Archive. Her father, arguing that people are made by their circumstances. The creature is that argument, put on trial by the author&#x27;s own daughter.</p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Sources</h2><span class="count">17 in total</span></div>
+  <p class="lede">Everything in the packet is built on real research, and most of it is free. If a claim sparks a question, go to the source and check it yourself. That is the whole idea.</p>
+    <h3>Start here</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Shelley, Mary. <em>Frankenstein; or, The Modern Prometheus</em>. 1818. <em>Project Gutenberg</em>, <a href="https://www.gutenberg.org/ebooks/41445">www.gutenberg.org/ebooks/41445</a>.</p>
+        <p class="note">The first edition, and the text this packet quotes throughout. She rewrote it in 1831 and the changes matter, so get this one. The 1831 text is ebook 42324 if you want to compare.</p>
+      </li>
+      <li>
+        <p class="cite">Shelley, Mary. <em>The Journals of Mary Shelley, 1814-1844</em>. Vol. 1, edited by Paula R. Feldman and Diana Scott-Kilvert, Clarendon Press, 1987.</p>
+        <p class="note">In print rather than free, but most libraries can get it. The twelve days of her first daughter&#x27;s life, and the entry for 19 March 1815 recording the dream that the baby came back.</p>
+      </li>
+    </ul>
+    <h3>The world she wrote in (free, public domain)</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Milton, John. <em>Paradise Lost</em>. 1667. <em>Project Gutenberg</em>, <a href="https://www.gutenberg.org/ebooks/26">www.gutenberg.org/ebooks/26</a>.</p>
+        <p class="note">The novel&#x27;s epigraph, and the book the creature finds and reads inside the story. Read his speech beside Milton&#x27;s Adam.</p>
+      </li>
+      <li>
+        <p class="cite">Godwin, William. <em>An Enquiry Concerning Political Justice</em>. 1793.</p>
+        <p class="note">Her father, arguing that people are made by circumstance, not born good or wicked. The creature puts that argument on trial. Her mother&#x27;s case is worth reading too: Mary Wollstonecraft, <em>A Vindication of the Rights of Woman</em>, ebook 3420.</p>
+      </li>
+      <li>
+        <p class="cite">Lawrence, William. <em>Lectures on Physiology, Zoology, and the Natural History of Man</em>. 1819.</p>
+        <p class="note">The book that cost its author his hospital post. Lawrence argued life needs no added spirit, only organisation, against his former mentor John Abernethy. He was also the Shelley household&#x27;s physician.</p>
+      </li>
+    </ul>
+    <h3>The modern science, and one open argument</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">van Dijk, J. Gert, et al. &quot;Timing of Circulatory and Neurological Events in Syncope.&quot; <em>Frontiers in Cardiovascular Medicine</em>, vol. 7, art. 36, 2020, <a href="https://doi.org/10.3389/fcvm.2020.00036">doi.org/10.3389/fcvm.2020.00036</a>.</p>
+        <p class="note">Open access. Where the eight-second figure comes from: how fast consciousness goes when circulation stops.</p>
+      </li>
+      <li>
+        <p class="cite">Starzl, Thomas E. &quot;The Landmark Identical Twin Case.&quot; <em>JAMA</em>, vol. 251, no. 19, 1984, pp. 2572-73.</p>
+        <p class="note">Free through PubMed Central. The 1954 kidney transplant, why it had to be done between twins, and the 82 minutes it went without blood.</p>
+      </li>
+      <li>
+        <p class="cite">James, Edward, and Farah Mendlesohn, editors. <em>The Cambridge Companion to Science Fiction</em>. Cambridge UP, 2003.</p>
+        <p class="note">Chapter 1 argues this novel heads the tradition of <em>anti</em>-science fiction; chapter 12 calls it the founding work of the field. Brian Aldiss (<em>Billion Year Spree</em>, 1973) says it is simply the first. Still unsettled.</p>
+      </li>
+    </ul>
+    <h3>Did not fit the printed page</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Parent, André. &quot;Giovanni Aldini: From Animal Electricity to Human Brain Stimulation.&quot; <em>Canadian Journal of Neurological Sciences</em>, vol. 31, no. 4, 2004, pp. 576-84, <a href="https://doi.org/10.1017/S0317167100003851">https://doi.org/10.1017/S0317167100003851</a>.</p>
+        <p class="note">Where the George Foster demonstration in the packet comes from, in detail: the date, the venue, and Aldini&#x27;s own account of what the corpse did. It also makes the case that he was a serious investigator working on resuscitation rather than the showman the legend remembers.</p>
+      </li>
+      <li>
+        <p class="cite">Aylward, Alex. &quot;Revitalising a Nineteenth Century Debate about Life (Which Has Been Done to Death).&quot; <em>The Past, Present, and Future of Integrated History and Philosophy of Science</em>, edited by Emily Herring et al., Routledge, 2019, pp. 210-27.</p>
+        <p class="note">The Abernethy and Lawrence controversy, and a warning against telling it too simply. Lawrence did not argue that life is only chemistry; he argued for a rival account built on organisation. The popular version of that fight is the one worth unlearning.</p>
+      </li>
+      <li>
+        <p class="cite">Luke, Hugh J., Jr. &quot;Sir William Lawrence: Physician to Shelley and Mary.&quot; <em>Papers on Language and Literature</em>, 1965.</p>
+        <p class="note">The evidence that the surgeon at the centre of the vitalism fight was also the doctor attending the household while the novel was being written.</p>
+      </li>
+      <li>
+        <p class="cite">O&#x27;Rourke, James. &quot;The 1831 Introduction and Revisions to <em>Frankenstein</em>: Mary Shelley Dictates Her Legacy.&quot; <em>Studies in Romanticism</em>, vol. 38, no. 3, 1999, pp. 365-85, <a href="https://www.jstor.org/stable/25601400">https://www.jstor.org/stable/25601400</a>.</p>
+        <p class="note">The two-texts question, laid out properly. Whether 1831 is a recantation of 1818 or a sharpening of it, who has argued which, and the case that the revisions were a deliberate act of legacy-shaping rather than simple retreat.</p>
+      </li>
+      <li>
+        <p class="cite">Mellor, Anne K. &quot;Choosing a Text of <em>Frankenstein</em> to Teach.&quot; <em>Approaches to Teaching Shelley&#x27;s Frankenstein</em>, edited by Stephen C. Behrendt, Modern Language Association, 1990, pp. 31-37.</p>
+        <p class="note">An essay written for exactly the decision a teacher assigning this book has to make. If you read one thing on the edition question, read this.</p>
+      </li>
+      <li>
+        <p class="cite">Crouch, Laura E. &quot;Davy&#x27;s <em>A Discourse, Introductory to A Course of Lectures on Chemistry</em>: A Possible Scientific Source of <em>Frankenstein</em>.&quot; <em>Keats-Shelley Journal</em>, vol. 27, 1978, pp. 35-44, <a href="https://www.jstor.org/stable/30210165">https://www.jstor.org/stable/30210165</a>.</p>
+        <p class="note">What Mary Shelley was reading in chemistry in October 1816, and an honest account of how much can and cannot be established about it. The title says &quot;A Possible Scientific Source&quot; and means it.</p>
+      </li>
+      <li>
+        <p class="cite">Bossaert, L. L. &quot;Fibrillation and Defibrillation of the Heart.&quot; <em>British Journal of Anaesthesia</em>, vol. 79, 1997, pp. 203-13.</p>
+        <p class="note">The mechanism behind the packet&#x27;s claim that a defibrillator stops a rhythm rather than starting one, and what happens to a fibrillating heart when nothing is done.</p>
+      </li>
+      <li>
+        <p class="cite">Greif, Robert, et al. &quot;European Resuscitation Council Guidelines 2025: Executive Summary.&quot; <em>Resuscitation</em>, vol. 215, 2025, art. 110770.</p>
+        <p class="note">The current clinical guideline, and the source for the flat line being explicitly non-shockable. Note the date: these are revised on roughly a five-year cycle, so check for a newer edition before quoting them as current.</p>
+      </li>
+      <li>
+        <p class="cite">Shelley, Mary. <em>Frankenstein; or, The Modern Prometheus</em>. 1831, <em>Project Gutenberg</em>, <a href="https://www.gutenberg.org/ebooks/42324">www.gutenberg.org/ebooks/42324</a>.</p>
+        <p class="note">The revised text, free. Read the 1831 introduction beside it. That is where she tells the Villa Diodati story, fifteen years later, and explains away her own audacity.</p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Updates and corrections</h2></div>
+  <div class="col">
+    <p class="lede">Nothing yet. When a link here dies or a finding is superseded, the correction is posted here rather than left wrong in print.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="sec-head"><h2>The packet</h2></div>
+  <ul class="sources downloads">
+      <li>
+        <a class="dl" href="/packets/fl-01-0002-complete.zip">Download the complete packet</a>
+        <p class="note">All ten documents: specimen record, both introductions, the reading companion, sources, three quiz variants, the answer guide, and the discussion guide. Free, no email required.</p>
+      </li>
+      <li>
+        <a class="dl" href="/packets/fl-01-0002-student.zip">Download the student set only</a>
+        <p class="note">Specimen record, reader introduction, the reading companion, and the source list. This is what goes home with the book, without the quiz or the answer key.</p>
+      </li>
+  </ul>
+</section>
+
+<p class="stamp">Last reviewed 2026-08-14 &middot; Specimen FL-01.0002</p>
+</div>
+
+<footer>
+  <span class="ethos">Open a book. Open the lab.</span>
+  <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
+</footer>
+</body>
+</html>
