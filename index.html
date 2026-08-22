@@ -268,6 +268,9 @@
     border-bottom:2px solid var(--accent); padding-bottom:2px;
   }
   .card .dl:hover{ opacity:.6; }
+  .lab-note{ max-width:64ch; margin:34px 0 0; color:var(--ink-soft); font-size:.98rem; }
+  .lab-note a{ color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--cyan); padding-bottom:1px; }
+  .lab-note a:hover{ opacity:.6; }
   .kit-sec{ margin-top:clamp(46px,7vh,80px); }
   .kit{ display:grid; grid-template-columns:repeat(auto-fit,minmax(258px,1fr)); gap:20px 30px; }
   .kit div{ border-top:1.5px solid var(--ink); padding-top:12px; }
@@ -448,7 +451,7 @@
     <header>
       <div class="rise d1">The Fiction Laboratory &nbsp;·&nbsp; Est. 2026 &nbsp;·&nbsp; Chicago</div>
       <div class="right rise d1">
-        <nav><a href="/books/">Books</a> <a href="/#notify">Get notified</a></nav>
+        <nav><a href="/books/">Books</a> <a href="/pricing.html">Pricing</a> <a href="/#notify">Get notified</a></nav>
         <span class="pulse"></span> In Development
       </div>
     </header>
@@ -485,7 +488,7 @@
     </section>
 
     <div class="banner rise d5">
-      <span>First two packets complete. The lab opens soon.</span>
+      <span>Three introductory packets, finished and free. Six more in the lab.</span>
       <a href="#notify">Get notified at launch &darr;</a>
     </div>
 
@@ -502,15 +505,16 @@
           <div class="author">H. G. Wells</div>
           <span class="disc">Physical Sciences</span>
           <span class="status done">Packet complete</span>
-          <a class="dl" href="/packets/fl-01-0001-complete.zip" download>Download packet &middot; 3.8 MB</a>
+          <a class="dl" href="/packets/fl-01-0001-complete.zip" download>Download packet &middot; 3.1 MB</a>
         </article>
 
         <article class="card rise d7" style="--accent:var(--green)">
           <div class="no"><span>Specimen 02</span><span class="code">100A · 500A</span></div>
-          <h3 class="title">Frankenstein</h3>
+          <h3 class="title"><a href="/books/fl-01-0002/">Frankenstein</a></h3>
           <div class="author">Mary Shelley</div>
           <span class="disc">Biological Sciences</span>
-          <span class="status">In development</span>
+          <span class="status done">Packet complete</span>
+          <a class="dl" href="/packets/fl-01-0002-complete.zip" download>Download packet &middot; 2.6 MB</a>
         </article>
 
         <article class="card rise d8" style="--accent:var(--orange)">
@@ -519,9 +523,14 @@
           <div class="author">Martha Wells</div>
           <span class="disc">Computer Science</span>
           <span class="status done">Packet complete</span>
-          <a class="dl" href="/packets/fl-01-0004-complete.zip" download>Download packet &middot; 4.1 MB</a>
+          <a class="dl" href="/packets/fl-01-0004-complete.zip" download>Download packet &middot; 3.5 MB</a>
         </article>
       </div>
+
+      <p class="lab-note rise d8">These three are the introductory set. They are finished
+      rather than previews, and each one is enough to run a unit on without waiting for
+      anything else. Six more titles are being built now. What a packet will cost, and
+      which books are next, is on the <a href="/pricing.html">pricing page</a>.</p>
     </section>
 
     <section class="lab kit-sec">
@@ -531,15 +540,15 @@
       </div>
       <div class="kit">
         <div><h3>01 &middot; Specimen record</h3><p>The catalog entry. Title, author, year, discipline codes, and a plot summary, on one page.</p></div>
-        <div><h3>02 &middot; Instructor introduction</h3><p>What the packet contains and how to run it, including anything to know before the class meets the book.</p></div>
-        <div><h3>03 &middot; Student introduction</h3><p>The one page a student reads first, explaining what they are being asked to do and why.</p></div>
+        <div><h3>02 &middot; Teacher introduction</h3><p>What the packet contains and how to run it, including anything to know before the class meets the book.</p></div>
+        <div><h3>03 &middot; Reader introduction</h3><p>The one page a student reads first, explaining what they are being asked to do and why.</p></div>
         <div><h3>04 &middot; Sources</h3><p>The research the packet is built on, in MLA style, most of it free to read.</p></div>
         <div><h3>05 &middot; Reading companion</h3><p>Four sections, roughly a thousand words each: the author, the moment the book was written into, what the story is really about, and the science. The science carries two audits, <em>The Lawbreaker</em> for where the book breaks the rules and <em>The Long Fuse</em> for what it set in motion in the real world.</p></div>
         <div><h3>06 &middot; Quiz, three variants</h3><p>The multiple choice differs across A, B, and C so answers cannot be traded. The short answers stay the same, so one rubric covers the class.</p></div>
         <div><h3>07 &middot; Answer guide</h3><p>Keys for all three variants, plus model responses and grading notes for the short answers.</p></div>
         <div><h3>08 &middot; Discussion guide</h3><p>A 45-minute session, built to be run by a teacher who has not read the book. Every question carries facilitation notes and a text anchor.</p></div>
       </div>
-      <p class="kit-note rise d6">Every title in the Core Library gets the same eight, whatever the book. Two are finished and free to download. The rest are in the lab.</p>
+      <p class="kit-note rise d6">Every title in the Core Library gets the same eight, whatever the book. Three are finished and free to download. The rest are in the lab.</p>
     </section>
 
     <section class="closer">

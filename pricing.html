@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What it costs | The Fiction Laboratory</title>
+<meta name="description" content="What a Fiction Laboratory packet costs, why there is no subscription, and which titles are being built next.">
+<style>
+@font-face{
+    font-family:"Domine";
+    font-style:normal;
+    font-weight:400 700;
+    font-display:swap;
+    src:url("fonts/domine-latin-variable.woff2") format("woff2");
+  }
+@font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:100 700;
+    font-display:swap;
+    src:url("fonts/roboto-mono-latin-variable.woff2") format("woff2");
+  }
+:root{
+    --paper:   #ffffff;
+    --ink:     #0d0d0d;
+    --ink-soft:#3a3a37;
+    --line:    #d9d7cd;
+
+    --cyan:   #00b8d4;
+    --green:  #5fb022;
+    --yellow: #ffe000;
+    --orange: #ff6b2c;
+
+    --serif: "Domine", Georgia, serif;
+    --display: "Domine", Georgia, serif;
+    --mono: "Roboto Mono", ui-monospace, monospace;
+  }
+body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(13,13,13,.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+  }
+body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--cyan)}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 0}
+.col{max-width:62ch}
+a{color:var(--ink)}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px;transition:opacity .18s ease}
+header a:hover{opacity:.6}
+header nav{display:flex;gap:18px}
+header nav a{border-bottom:1.5px solid var(--ink)}
+header nav a[aria-current]{border-bottom-color:var(--accent);border-bottom-width:3px}
+header a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+.kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
+.kicker::before{content:"";width:34px;height:1.5px;background:var(--accent)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:0}
+.lede{color:var(--ink-soft);max-width:62ch;font-size:1.08rem;margin:26px 0 0}
+
+section{margin-top:clamp(48px,7vh,78px)}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-top:1.5px solid var(--ink);
+  padding-top:14px;margin-bottom:26px}
+.sec-head h2{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;margin:0}
+.sec-head .count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-left:auto}
+p{max-width:62ch}
+
+table.bands{border-collapse:collapse;width:100%;max-width:620px;margin:0}
+table.bands th,table.bands td{text-align:left;padding:14px 0;border-bottom:1.5px solid var(--line);
+  vertical-align:baseline}
+table.bands tr:first-child th,table.bands tr:first-child td{border-top:1.5px solid var(--ink)}
+table.bands th{font-family:var(--display);font-weight:500;font-size:1.15rem}
+table.bands .pages{font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-soft)}
+table.bands .price{font-family:var(--mono);font-weight:700;font-size:1.3rem;
+  text-align:right;color:var(--accent)}
+
+ul.live{list-style:none;margin:0;padding:0;max-width:62ch}
+ul.live li{border-left:1.5px solid var(--accent);padding:2px 0 2px 18px;margin:0 0 16px;
+  font-family:var(--display);font-size:1.1rem}
+ul.live .by{font-family:var(--serif);font-size:.94rem;color:var(--ink-soft);
+  display:block;margin-top:2px}
+
+.queue{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:26px 30px}
+.q{border-top:1.5px solid var(--ink);padding-top:13px}
+.qtop{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.qcode{color:var(--ink-soft)}
+.qprice{font-weight:700;color:var(--accent);font-size:12px}
+.qtitle{font-family:var(--display);font-weight:500;font-size:1.35rem;line-height:1.14;
+  margin:10px 0 2px}
+.qby{font-family:var(--display);font-style:italic;color:var(--ink-soft);font-size:1rem}
+.qwhy{font-size:.96rem;margin:10px 0 0}
+.qmeta{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:12px}
+
+.callout{border-left:3px solid var(--accent);padding:2px 0 2px 20px;margin:30px 0 0;max-width:62ch}
+.callout strong{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  display:block;margin-bottom:8px}
+
+a[href^="http"],a[href^="/"]{text-decoration:none;border-bottom:1.5px solid var(--accent);
+  padding-bottom:1px;transition:opacity .18s ease}
+a[href^="http"]:hover,a[href^="/"]:hover{opacity:.6}
+
+footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
+  padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+footer .ethos{color:var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+footer a:hover{opacity:.6}
+.stamp{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:30px}
+@media (max-width:640px){table.bands .price{font-size:1.1rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="wordmark" href="/">The Fiction Laboratory</a>
+  <nav>
+    <a href="/books/">Books</a>
+    <a href="/pricing.html" aria-current="page">Pricing</a>
+    <a href="/#notify">Get notified</a>
+  </nav>
+</header>
+
+<div class="kicker">Pricing</div>
+<h1>What it costs</h1>
+<p class="lede">A packet is a one-time purchase, priced by the length of the book it goes
+with. No subscription, no account, nothing to log into. You buy it, you download it, it is
+yours.</p>
+
+<section>
+  <div class="sec-head"><h2>Per packet</h2><span class="count">One-time</span></div>
+  <table class="bands">
+    <tbody>
+      <tr><th scope="row">Short / novella</th><td class="pages">under 150 pages</td><td class="price">$3</td></tr>
+      <tr><th scope="row">Mid novel</th><td class="pages">150 to 500 pages</td><td class="price">$5</td></tr>
+      <tr><th scope="row">Long novel</th><td class="pages">500 pages and up</td><td class="price">$7</td></tr>
+    </tbody>
+  </table>
+  <p>Length is the only variable. Every packet holds the same eight documents whatever the
+  book: the specimen record, both introductions, the reading companion, the sources, three
+  quiz variants, the answer guide, and the discussion guide. A longer book gets a longer
+  quiz, and that is where the difference goes.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Free right now</h2><span class="count">Three titles</span></div>
+  <p>Three complete packets are free, un-gated, and need no email address:</p>
+  <ul class="live">
+      <li><a href="/books/fl-01-0001/">The Time Machine</a><span class="by">H. G. Wells</span></li>
+      <li><a href="/books/fl-01-0002/">Frankenstein</a><span class="by">Mary Shelley</span></li>
+      <li><a href="/books/fl-01-0004/">All Systems Red</a><span class="by">Martha Wells</span></li>
+  </ul>
+  <p>These are the introductory set. They are finished, not previews, and each one is
+  enough to run a unit on without waiting for anything else to be built.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>No subscriptions. Ever.</h2></div>
+  <p>You are not renting access to your own materials. A packet you downloaded in September
+  still works in May, still works the year after that, and still works if this site is gone.
+  It is a PDF in a folder you control.</p>
+  <div class="callout">
+    <strong>Still being worked out</strong>
+    Bundles by thread, by discipline, and by author, each at a discount off the sum of its
+    parts. School and district licensing. Both are coming and neither has a number yet.
+    When they do, the numbers will be on this page.
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Next in the lab</h2><span class="count">Six titles</span></div>
+  <p>Six packets are in build. No dates on any of them, on purpose: a packet ships complete
+  or it does not ship, and a schedule here would be a promise the work cannot keep. Prices
+  follow the same bands.</p>
+  <div class="queue">
+      <article class="q">
+        <div class="qtop"><span class="qcode">200A · 500A</span><span class="qprice">$5</span></div>
+        <h3 class="qtitle">Foundation</h3>
+        <div class="qby">Isaac Asimov</div>
+        <p class="qwhy">Psychohistory as sociology and statistics, and a scientist warning an empire that will not listen.</p>
+        <div class="qmeta">Mid novel &middot; High school</div>
+      </article>
+      <article class="q">
+        <div class="qtop"><span class="qcode">100A · 300A</span><span class="qprice">$7</span></div>
+        <h3 class="qtitle">Children of Time</h3>
+        <div class="qby">Adrian Tchaikovsky</div>
+        <p class="qwhy">Arachnid physiology, terraforming, and uplift, worked out across deep time.</p>
+        <div class="qmeta">Long novel &middot; High school</div>
+      </article>
+      <article class="q">
+        <div class="qtop"><span class="qcode">100A · 200A</span><span class="qprice">$5</span></div>
+        <h3 class="qtitle">The Martian</h3>
+        <div class="qby">Andy Weir</div>
+        <p class="qwhy">Botany, thermodynamics, and chemistry, all of it reasoned out loud on the page.</p>
+        <div class="qmeta">Mid novel &middot; High school</div>
+      </article>
+      <article class="q">
+        <div class="qtop"><span class="qcode">400A · 500A</span><span class="qprice">$7</span></div>
+        <h3 class="qtitle">The Ministry for the Future</h3>
+        <div class="qby">Kim Stanley Robinson</div>
+        <p class="qwhy">Geoengineering and carbon economics, argued rather than narrated.</p>
+        <div class="qmeta">Long novel &middot; Advanced</div>
+      </article>
+      <article class="q">
+        <div class="qtop"><span class="qcode">100A · 200A</span><span class="qprice">$5</span></div>
+        <h3 class="qtitle">Jurassic Park</h3>
+        <div class="qby">Michael Crichton</div>
+        <p class="qwhy">Gets the science mostly right and the ethics catastrophically wrong, which is the whole lesson.</p>
+        <div class="qmeta">Mid novel &middot; High school</div>
+      </article>
+      <article class="q">
+        <div class="qtop"><span class="qcode">200A · 500A</span><span class="qprice">$5</span></div>
+        <h3 class="qtitle">Ender&#x27;s Game</h3>
+        <div class="qby">Orson Scott Card</div>
+        <p class="qwhy">Zero-gravity kinetics and game theory, taught to a child who is never told what he is actually doing.</p>
+        <div class="qmeta">Mid novel &middot; Middle school</div>
+      </article>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>The book itself</h2></div>
+  <p>The packet is the part that costs money. The book does not have to. Every title on this
+  site leads with borrowing: your public library first, then Libby, which puts library ebooks
+  and audiobooks on a phone with a card you already have. Public domain titles link to Project
+  Gutenberg or Open Library, where they are free to anyone, forever. Anything you would rather
+  own links to Bookshop.org, which sends the money to independent bookstores.</p>
+  <p>There are no Amazon links anywhere on this site, and there never will be.</p>
+</section>
+
+<p class="stamp">Prices in USD &middot; Bundles and licensing not yet priced</p>
+</div>
+
+<footer>
+  <span class="ethos">Open a book. Open the lab.</span>
+  <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
+</footer>
+</body>
+</html>
