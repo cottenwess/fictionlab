@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Children of Time | The Fiction Laboratory</title>
+<meta name="description" content="Where to find Children of Time, the sources behind its Fiction Laboratory packet, and any corrections posted since printing.">
+<style>
+@font-face{
+    font-family:"Domine";
+    font-style:normal;
+    font-weight:400 700;
+    font-display:swap;
+    src:url("../../fonts/domine-latin-variable.woff2") format("woff2");
+  }
+@font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:100 700;
+    font-display:swap;
+    src:url("../../fonts/roboto-mono-latin-variable.woff2") format("woff2");
+  }
+:root{
+    --paper:   #ffffff;
+    --ink:     #0d0d0d;
+    --ink-soft:#3a3a37;
+    --line:    #d9d7cd;
+
+    --cyan:   #00b8d4;
+    --green:  #5fb022;
+    --yellow: #ffe000;
+    --orange: #ff6b2c;
+
+    --serif: "Domine", Georgia, serif;
+    --display: "Domine", Georgia, serif;
+    --mono: "Roboto Mono", ui-monospace, monospace;
+  }
+body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(13,13,13,.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+  }
+body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--cyan)}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 0}
+.col{max-width:62ch}
+a{color:var(--ink)}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px;transition:opacity .18s ease}
+header a:hover{opacity:.6}
+header nav{display:flex;gap:18px}
+header nav a{border-bottom:1.5px solid var(--ink)}
+header nav a[aria-current]{border-bottom-color:var(--accent);border-bottom-width:3px}
+header a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+.kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
+.kicker::before{content:"";width:34px;height:1.5px;background:var(--accent)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:0}
+.byline{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin:.5rem 0 0}
+
+dl.codes{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:26px 0 0;
+  border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:14px 0}
+dl.codes dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);padding-top:3px}
+dl.codes dd{margin:0;font-family:var(--mono);font-size:12px;line-height:1.5}
+dl.codes .code{color:var(--accent);font-weight:700}
+
+.summary{font-size:1.08rem;margin:26px 0 0}
+.lede{color:var(--ink-soft);max-width:62ch}
+
+section{margin-top:clamp(48px,7vh,78px)}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-top:1.5px solid var(--ink);
+  padding-top:14px;margin-bottom:26px}
+.sec-head h2{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;margin:0}
+.sec-head .count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-left:auto}
+h3{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);margin:34px 0 14px}
+
+ul.sources{list-style:none;margin:0;padding:0;max-width:70ch}
+ul.sources li{border-left:1.5px solid var(--ink);padding:2px 0 2px 18px;margin:0 0 22px;
+  transition:border-color .18s ease}
+ul.sources li:hover{border-left-color:var(--accent)}
+p.cite{margin:0}
+p.note{margin:.4rem 0 0;color:var(--ink-soft);font-size:.94rem}
+ul.downloads li{border-left-color:var(--accent)}
+a.buy{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+  border:none;padding:15px 30px;margin:4px 0 0;font-family:var(--mono);font-size:12px;
+  font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:opacity .18s ease}
+a.buy:hover{opacity:.78}
+a.buy:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a.dl{font-family:var(--mono);font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:2px}
+a[href^="http"],a[href^="/"]{text-decoration:none;border-bottom:1.5px solid var(--accent);
+  padding-bottom:1px;transition:opacity .18s ease}
+a[href^="http"]:hover,a[href^="/"]:hover{opacity:.6}
+
+footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
+  padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+footer .ethos{color:var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+footer a:hover{opacity:.6}
+.stamp{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:30px}
+@media (max-width:640px){dl.codes{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="wordmark" href="/">The Fiction Laboratory</a>
+  <nav>
+    <a href="/books/" aria-current="page">Books</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/#notify">Get notified</a>
+  </nav>
+</header>
+
+<p class="kicker">Specimen FL-01.0008</p>
+<h1>Children of Time</h1>
+<p class="byline">Adrian Tchaikovsky. Born Adrian Czajkowski in 1972 and published under the respelling. He read zoology and psychology at Reading and spent most of his working life as a legal executive, writing in the evenings until 2018, 2015</p>
+
+<dl class="codes">
+  <dt>Primary</dt>
+  <dd><span class="code">100A</span> Biological Sciences · <span class="code">300A</span> Computer Science</dd>
+  <dt>Focused</dt>
+  <dd><span class="code">101A</span> Genetics · <span class="code">103A</span> Biological Ecology · <span class="code">105A</span> Neuroscience · <span class="code">302A</span> Linguistics</dd>
+</dl>
+
+<div class="col">
+<p class="summary">A terraforming project seeds a distant world with monkeys and a nanovirus built to accelerate their evolution, and the scientist running it means to be there when they wake up. Sabotage ends the mission, the monkeys never make it to the surface, and the virus goes to work on what is already there. What it finds is spiders. Over the next few thousand years the planet grows an intelligent civilization that nobody designed and nobody is watching, built by animals whose senses, mathematics and politics owe nothing to ours. Meanwhile the <em>Gilgamesh</em> arrives, carrying the last of humanity out of a ruined solar system and looking for somewhere to land. The novel alternates between the two: generations of spiders working out chemistry, astronomy and eventually radio, and a crew of exhausted humans thawing out for a few decades at a time across millennia. Both are heading for the same planet, and only one of them can be said to belong there. What settles it in the end is neither a weapon nor a treaty, but the problem of whether two species that share no evolutionary history can find any way to be understood.</p>
+<p class="lede">The Fiction Laboratory pairs science fiction novels with structured reading packets for science and English classes. This is the companion page for this title: where to find the book, every source behind its packet with live links, and any correction made since the packet was printed.</p>
+</div>
+
+<section>
+  <div class="sec-head"><h2>Where to find the book</h2></div>
+    <h3>Borrow it free</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Your public library.</strong> Search the catalog or ask at the desk. This one is widely held and frequently borrowed, so a hold may take a week or two. Interlibrary loan is free if your branch does not carry it.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Libby.</strong> <a href="https://libbyapp.com">libbyapp.com</a>. Library ebooks and audiobooks on a phone or tablet, free with a library card. The audiobook, read by Mel Hudson, is how a good many readers meet this book, and it handles the spider chapters better than you would expect.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Your school library.</strong> Less likely than the older titles in this library, since it is a recent book, but worth asking. It is a common request.</p>
+      </li>
+    </ul>
+    <h3>Read free, legally</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Not available.</strong> The novel was published in 2015 and is in copyright. Anything offering a free download is pirating it. The library is the free route here, and it is a good one.</p>
+      </li>
+    </ul>
+    <h3>Buy it</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong><a href="https://bookshop.org">Bookshop.org</a>.</strong> <a href="https://bookshop.org/book/9780316452502">bookshop.org/9780316452502</a>. Orders send the money to independent bookstores rather than to a warehouse. This is the widely stocked paperback.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Your local bookshop.</strong> Any independent store can order it within a few days.</p>
+      </li>
+    </ul>
+    <h3>A note on length</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>It is long, and the first hundred pages are the hardest.</strong> The novel alternates between human chapters and spider chapters, and the spider chapters take some acclimatizing because the viewpoint genuinely is not human. Readers who bounce off usually bounce in the first act. It is worth telling a class this in advance: the difficulty is deliberate, it is the book teaching you to read it, and it eases.</p>
+      </li>
+    </ul>
+    <h3>Keep reading</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Adrian Tchaikovsky, <em>Children of Ruin</em> (2019).</strong> The sequel. Octopuses this time, and a genuinely alien intelligence beyond either species.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Adrian Tchaikovsky, <em>Dogs of War</em> (2017).</strong> Shorter and sharper, on bioengineered animals and legal personhood. A good next step for a student who liked the ideas but found this one long.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>David Brin, <em>Startide Rising</em> (1983).</strong> The other great uplift novel, and almost the opposite argument.</p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Sources</h2><span class="count">15 in total</span></div>
+  <p class="lede">Everything in the packet is built on real research, and most of it is free. If a claim sparks a question, go to the source and check it yourself. That is the whole idea.</p>
+    <h3>Start here</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Wilcox, Stim, and Robert Jackson. &quot;Jumping Spider Tricksters: Deceit, Predation, and Cognition.&quot; <em>The Cognitive Animal</em>, MIT Press, 2002.</p>
+        <p class="note">The paper this packet&#x27;s science section rests on, by the researchers who study the real animal. It describes <em>Portia</em> stalking a spider across its own web, plucking the silk to imitate trapped prey and cycling through signals until one works. It also contains the sentence the novel writes past: that symbolic language is &quot;beyond anything achievable by a spider brain.&quot;</p>
+      </li>
+    </ul>
+    <h3>What the book is built on</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Jackson, Robert R., and Fiona R. Cross. &quot;A Cognitive Perspective on Aggressive Mimicry.&quot; <em>Journal of Zoology</em>, vol. 290, no. 3, 2013, pp. 161-171.</p>
+        <p class="note">Where the brain-size argument lives. Intuitions about small brains are not evidence, the authors say, and in <em>Portia</em>&#x27;s case &quot;the severity of size constraints has been overestimated.&quot;</p>
+      </li>
+      <li>
+        <p class="cite">Goss, S., et al. &quot;Self-Organized Shortcuts in the Argentine Ant.&quot; <em>Naturwissenschaften</em>, vol. 76, 1989, pp. 579-581.</p>
+        <p class="note">Three pages, and the origin of everything the spiders do with their ant colonies. Ants with &quot;only a limited individual capacity for orientation&quot; reliably find the shortest route anyway. No ant knows the answer; the colony produces it. Free.</p>
+      </li>
+      <li>
+        <p class="cite">Liang, Puping, et al. &quot;CRISPR/Cas9-Mediated Gene Editing in Human Tripronuclear Zygotes.&quot; <em>Protein &amp; Cell</em>, vol. 6, no. 5, 2015, pp. 363-372.</p>
+        <p class="note">The first reported use of CRISPR-Cas9 on human embryos, published the same year as the novel. Free.</p>
+      </li>
+      <li>
+        <p class="cite"><em>International Summit on Human Gene Editing: A Global Discussion.</em> National Academies Press, 2015.</p>
+        <p class="note">What the world&#x27;s science academies decided to do about it five months later: proceeding with heritable editing absent broad societal consensus would be irresponsible. Free.</p>
+      </li>
+    </ul>
+    <h3>The author, and where the book landed</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Sorg, Arley. &quot;Just Under the Threshold: A Conversation with Adrian Tchaikovsky.&quot; <em>Clarkesworld Magazine</em>, <a href="https://clarkesworldmagazine.com">clarkesworldmagazine.com</a>.</p>
+        <p class="note">The zoology-to-law career in his own account, and his verdict on this novel as a career risk: a &quot;weird spider SF book&quot; that &quot;seemed like a hell of a punt at the time.&quot; Free.</p>
+      </li>
+      <li>
+        <p class="cite">&quot;Children of Ruin by Adrian Tchaikovsky.&quot; <em>Author Interviews</em>, authorinterviews.co.uk.</p>
+        <p class="note">Short, and useful for one thing. Writing genuinely non-human viewpoints, he says, &quot;nearly broke my head to make it work.&quot; Free.</p>
+      </li>
+      <li>
+        <p class="cite">Tchaikovsky, Adrian. <em>Children of Time.</em> Tor UK, 2015.</p>
+        <p class="note">The novel itself. Winner of the Arthur C. Clarke Award, 2016. Two sequels follow, <em>Children of Ruin</em> (2019) and <em>Children of Memory</em> (2022).</p>
+      </li>
+    </ul>
+    <h3>Did not fit the printed page</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Tchaikovsky, Adrian. &quot;2023 Hugo Award Statement.&quot;</strong> <a href="https://adriantchaikovsky.com">adriantchaikovsky.com</a></p>
+        <p class="note">Worth knowing, and the reason this packet names only the Clarke Award. The Children of Time series was awarded the 2023 Hugo for Best Series. In February 2024 Tchaikovsky repudiated it over the administration of that year&#x27;s awards, writing that he &quot;cannot consider myself a Hugo winner and will not be citing the 2023 award result in my biographical details.&quot; We follow the author&#x27;s wishes.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Harland, Duane P., and Robert R. Jackson. &quot;Portia Perceptions: The Umwelt of an Araneophagic Jumping Spider.&quot;</strong> In <em>Complex Worlds from Simpler Nervous Systems</em>, MIT Press, 2004.</p>
+        <p class="note">For students who want to go further into how a spider with excellent eyes and a very small brain builds a picture of the world.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Arthur C. Clarke Award.</strong> <a href="https://clarkeaward.com">clarkeaward.com</a></p>
+        <p class="note">The award record, and thirty years of shortlists that make a good reading list on their own.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Gordon, Deborah M., on ant colony behavior.</strong> Stanford University.</p>
+        <p class="note">Decades of fieldwork on how colonies allocate labor with no ant in charge. The real version of what the spiders in this novel domesticate.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Gordon, Deborah M. &quot;The Organization of Work in Social Insect Colonies.&quot;</strong> <em>Nature</em>, vol. 380, 1996, pp. 121-124.</p>
+        <p class="note">How a colony moves workers between jobs as conditions change, with nothing in charge. The real version of what the spiders in this novel domesticate. A free copy is posted at <a href="https://csc.ucdavis.edu">csc.ucdavis.edu</a>.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Wells, H. G. <em>The Island of Doctor Moreau</em>.</strong> 1896.</p>
+        <p class="note">Uplift as obscenity, and the other end of the tradition this novel is arguing with. In this library as a neighbor to <em>The Time Machine</em>, FL-01.0001.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Brin, David. <em>Startide Rising</em>.</strong> 1983.</p>
+        <p class="note">Uplift as a galactic institution, with patron species and legal obligations. Tchaikovsky takes a third position against both Wells and Brin: an uplift that is neither atrocity nor institution, but an accident that turned out well.</p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Updates and corrections</h2></div>
+  <div class="col">
+    <p class="lede">Nothing yet. When a link here dies or a finding is superseded, the correction is posted here rather than left wrong in print.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="sec-head"><h2>The packet</h2><span class="count">$7 &middot; one time</span></div>
+  <p class="lede">Eight documents as PDFs, in two archives: the complete packet, and a student
+  set holding only the four documents a class should see. Yours to use with every class you
+  teach, this year and every year after. No subscription and no account.</p>
+  <p><a class="buy" href="https://payhip.com/b/UeD0p">Buy the packet &middot; $7</a></p>
+  <p class="note">Checkout is handled by Payhip. Nothing is loaded from them until you follow
+  this link.</p>
+</section>
+
+<p class="stamp">Last reviewed 2026-08-26 &middot; Specimen FL-01.0008</p>
+</div>
+
+<footer>
+  <span class="ethos">Open a book. Open the lab.</span>
+  <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
+</footer>
+</body>
+</html>

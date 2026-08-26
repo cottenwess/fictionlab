@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you | The Fiction Laboratory</title>
+<meta name="description" content="Your order is complete. Where to find your packet, what to do if the email has not arrived, and what you can do with the files.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+@font-face{
+    font-family:"Domine";
+    font-style:normal;
+    font-weight:400 700;
+    font-display:swap;
+    src:url("fonts/domine-latin-variable.woff2") format("woff2");
+  }
+@font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:100 700;
+    font-display:swap;
+    src:url("fonts/roboto-mono-latin-variable.woff2") format("woff2");
+  }
+:root{
+    --paper:   #ffffff;
+    --ink:     #0d0d0d;
+    --ink-soft:#3a3a37;
+    --line:    #d9d7cd;
+
+    --cyan:   #00b8d4;
+    --green:  #5fb022;
+    --yellow: #ffe000;
+    --orange: #ff6b2c;
+
+    --serif: "Domine", Georgia, serif;
+    --display: "Domine", Georgia, serif;
+    --mono: "Roboto Mono", ui-monospace, monospace;
+  }
+body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(13,13,13,.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+  }
+body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--green)}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 0}
+a{color:var(--ink)}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px;transition:opacity .18s ease}
+header a:hover{opacity:.6}
+header nav{display:flex;gap:18px}
+header nav a{border-bottom:1.5px solid var(--ink)}
+header a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+.kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
+.kicker::before{content:"";width:34px;height:1.5px;background:var(--accent)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:0}
+.lede{color:var(--ink-soft);max-width:62ch;font-size:1.08rem;margin:26px 0 0}
+
+section{margin-top:clamp(48px,7vh,78px)}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-top:1.5px solid var(--ink);
+  padding-top:14px;margin-bottom:26px}
+.sec-head h2{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;margin:0}
+.sec-head .count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-left:auto}
+p{max-width:62ch}
+
+/* Numbered routes and remedies, sharing the specimen numeral treatment. */
+ol.steps{list-style:none;margin:0;padding:0;max-width:62ch;counter-reset:step}
+ol.steps li{counter-increment:step;position:relative;padding:0 0 0 46px;margin:0 0 20px}
+ol.steps li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:.18em;
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--accent)}
+ol.steps h3{font-family:var(--display);font-weight:500;font-size:1.12rem;line-height:1.25;margin:0 0 4px}
+ol.steps p{margin:0;font-size:.98rem;color:var(--ink-soft)}
+
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:24px 30px}
+.kit div{border-top:1.5px solid var(--line);padding-top:12px}
+.kit h3{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;margin:0 0 6px}
+.kit p{margin:0;font-size:.95rem;color:var(--ink-soft);max-width:none}
+
+.callout{border-left:3px solid var(--accent);padding:2px 0 2px 20px;margin:30px 0 0;max-width:62ch}
+.callout strong{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  display:block;margin-bottom:8px}
+
+.onward{display:flex;flex-wrap:wrap;gap:14px 26px;margin:34px 0 0;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+
+a[href^="http"],a[href^="/"],a[href^="mailto:"]{text-decoration:none;
+  border-bottom:1.5px solid var(--accent);padding-bottom:1px;transition:opacity .18s ease}
+a[href^="http"]:hover,a[href^="/"]:hover,a[href^="mailto:"]:hover{opacity:.6}
+
+footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
+  padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+footer .ethos{color:var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+footer a:hover{opacity:.6}
+.stamp{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:30px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="wordmark" href="/">The Fiction Laboratory</a>
+  <nav>
+    <a href="/books/">Books</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/#notify">Get notified</a>
+  </nav>
+</header>
+
+<div class="kicker">Order complete</div>
+<h1>Thank you</h1>
+<p class="lede">Your packet is paid for and released. The files are not on this page, because
+this page does not know who you are; they come to you by email instead. Below is where to
+look, what to do if nothing arrives, and what the packet expects of you once it does.</p>
+
+<section>
+  <div class="sec-head"><h2>Where the files are</h2><span class="count">Two routes</span></div>
+  <ol class="steps">
+    <li>
+      <h3>The receipt email</h3>
+      <p>Payhip sends it within a minute or two of payment, from a payhip.com address, carrying
+      a download link for every item in your order. Keep the email, and read the note below
+      about how many times that link will work.</p>
+    </li>
+    <li>
+      <h3>The confirmation screen you just came from</h3>
+      <p>It offered the same download before it sent you here. If your browser still has it in
+      history, that link works too.</p>
+    </li>
+  </ol>
+  <div class="callout">
+    <strong>The link works five times</strong>
+    <p>Your download link is good for five downloads, which is enough to get the packet onto a
+    school machine, a home machine and a backup drive with room to spare. It is not enough to
+    serve as your permanent copy, so treat the fifth one as the last.</p>
+    <p>So do this now, while you are thinking about it: download the files and put them in a
+    folder you control, on your own drive, rather than leaving them as a link in your inbox.
+    There is no account here and nothing to log back into. That is deliberate. Once the files
+    are on your drive they are yours outright, nobody can take them away from you, and nobody
+    is holding a spare copy for you either.</p>
+    <p>Run out anyway? A machine died, a folder got cleaned out, the download failed halfway
+    three times running. Write to
+    <a href="mailto:Inquiries@fictionlaboratory.com?subject=Download%20limit%20reached">Inquiries@fictionlaboratory.com</a>
+    and the count gets reset or the files get sent to you directly. You bought the packet. The
+    limit is there to stop the link being passed around, not to stop you having what you paid
+    for, and nobody is going to make you argue for it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>If the email has not arrived</h2><span class="count">Four things to try</span></div>
+  <ol class="steps">
+    <li>
+      <h3>Give it five minutes</h3>
+      <p>Payment processors and mail servers do not always agree about what counts as fast.</p>
+    </li>
+    <li>
+      <h3>Look in spam or junk</h3>
+      <p>A first message from a sender you have never received mail from lands there routinely.</p>
+    </li>
+    <li>
+      <h3>If you bought this on a school address, suspect the district filter</h3>
+      <p>Many school systems quarantine mail from unfamiliar senders before it reaches a
+      teacher's inbox, and a first message from Payhip is exactly that. Check the quarantine
+      digest your district sends, or ask whoever runs your mail to release it. Buying on a
+      personal address is the reliable way around the problem.</p>
+    </li>
+    <li>
+      <h3>Check the address you typed at checkout</h3>
+      <p>A transposed letter sends the packet somewhere real and silent.</p>
+    </li>
+  </ol>
+  <p>Still nothing? Write to
+  <a href="mailto:Inquiries@fictionlaboratory.com?subject=Missing%20packet%20download">Inquiries@fictionlaboratory.com</a>
+  with the name and email on the order and the files will be sent to you directly. That address
+  is also the one to use if you have used up your five downloads and need the packet again. A
+  person reads it, and no email you send there costs you a download.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>What is in the folder</h2><span class="count">Eight documents</span></div>
+  <div class="kit">
+    <div><h3>01 &middot; Specimen record</h3><p>The catalog entry: title, author, year, discipline codes and a plot summary, on one page.</p></div>
+    <div><h3>02 &middot; Teacher introduction</h3><p>Read this one first. What the packet holds, how it is meant to run, and anything to know before the class meets the book.</p></div>
+    <div><h3>03 &middot; Reader introduction</h3><p>The page a student reads first, explaining what they are being asked to do and why.</p></div>
+    <div><h3>04 &middot; Sources</h3><p>The research behind the packet, in MLA style, most of it free to read.</p></div>
+    <div><h3>05 &middot; Reading companion</h3><p>Four sections: the author, the moment the book was written into, what the story is really about, and the science, with its two audits.</p></div>
+    <div><h3>06 &middot; Quiz, three variants</h3><p>The objective questions differ across A, B and C so answers cannot be traded. The short answers stay the same, so one rubric covers the class.</p></div>
+    <div><h3>07 &middot; Answer guide</h3><p>Keys for all three variants, plus model responses and grading notes for the short answers.</p></div>
+    <div><h3>08 &middot; Discussion guide</h3><p>A 45-minute session, built to be run by a teacher who has not read the book.</p></div>
+  </div>
+  <div class="callout">
+    <strong>Two archives, and the difference matters</strong>
+    <p>Your download holds two zip files. The complete archive has all eight documents. The
+    student archive has only the four a student should see: the specimen record, the reader
+    introduction, the sources and the reading companion.</p>
+    <p>That means you can hand out the student archive whole, without also handing out the
+    three quiz variants and the answer guide. Send students that one.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>What you can do with it</h2><span class="count">One teacher</span></div>
+  <p>It is yours. Print it, copy it, put it on your own class page, and use it with every
+  class you teach, this year and every year after. Nothing expires, there is no seat to renew,
+  and the packet keeps working if this site does not.</p>
+  <p>What it is not is a site licence. If another teacher in your building wants it, they need
+  their own copy. School and district pricing is being worked out for exactly that case, and
+  the numbers will go on the <a href="/pricing.html">pricing page</a> when they exist.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>The book itself</h2><span class="count">Borrow it free</span></div>
+  <p>The packet is the part that costs money. The book does not have to. Every title on this
+  site leads with borrowing: your public library first, then Libby, which puts library ebooks
+  and audiobooks on a phone with a card you already have. Public domain titles are free to
+  anyone, forever, at Project Gutenberg or Open Library. Anything you would rather own links
+  to Bookshop.org, which sends the money to independent bookstores. Your title's page in
+  <a href="/books/">the catalog</a> carries all of those links, along with the full source
+  list behind the packet and any correction posted since it was printed.</p>
+  <div class="onward">
+    <a href="/books/">Browse the catalog</a>
+    <a href="/pricing.html">What is coming next</a>
+    <a href="/#notify">Get notified when a packet lands</a>
+  </div>
+</section>
+
+<p class="stamp">Order complete &middot; Five downloads &middot; No account, no subscription</p>
+</div>
+
+<footer>
+  <span class="ethos">Open a book. Open the lab.</span>
+  <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How AI Is Used Here · The Fiction Laboratory</title>
+<meta name="description" content="Where AI is used in building these packets, where it is not allowed anywhere near them, and the rules that keep the difference. Short version: it drafts, it never decides, and I read every book myself." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://fictionlaboratory.com/ai.html" />
+
+<style>
+  /* Same self-hosted fonts as the main page. No third-party requests. */
+  @font-face{
+    font-family:"Domine";
+    font-style:normal;
+    font-weight:400 700;
+    font-display:swap;
+    src:url("fonts/domine-latin-variable.woff2") format("woff2");
+  }
+  @font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:100 700;
+    font-display:swap;
+    src:url("fonts/roboto-mono-latin-variable.woff2") format("woff2");
+  }
+
+  :root{
+    --paper:   #ffffff;
+    --ink:     #0d0d0d;
+    --ink-soft:#3a3a37;
+    --line:    #d9d7cd;
+
+    --cyan:   #00b8d4;
+    --green:  #5fb022;
+    --yellow: #ffe000;
+    --orange: #ff6b2c;
+
+    --serif: "Domine", Georgia, serif;
+    --mono: "Roboto Mono", ui-monospace, monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 clamp(20px, 5vw, 48px);
+  }
+
+  header{
+    display:flex; flex-wrap:wrap; gap:10px 24px;
+    justify-content:space-between; align-items:center;
+    padding:28px 0 0;
+    font-family:var(--mono);
+    font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-soft); font-weight:600;
+  }
+  header a{ color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--ink); }
+  header a:hover{ opacity:.6; }
+
+  h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2rem, 5.5vw, 3.2rem);
+    line-height:1.06;
+    letter-spacing:-.02em;
+    margin:clamp(40px,7vh,72px) 0 14px;
+  }
+
+  .effective{
+    font-family:var(--mono);
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-soft); font-weight:600;
+    padding-bottom:26px;
+    border-bottom:1.5px solid var(--ink);
+  }
+
+  /* the short version, up top, because nobody reads these */
+  .tldr{
+    border:1.5px solid var(--ink);
+    border-left:6px solid var(--cyan);
+    padding:22px 24px;
+    margin:34px 0 8px;
+  }
+  .tldr h2{
+    font-family:var(--mono); font-weight:700;
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  .tldr p + p{ margin-top:10px; }
+  .tldr strong{ font-weight:500; }
+
+  h2{
+    font-family:var(--mono); font-weight:700;
+    font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+    border-top:1.5px solid var(--ink);
+    padding-top:14px;
+    margin:44px 0 16px;
+  }
+  h3{
+    font-family:var(--serif); font-weight:500;
+    font-size:1.12rem;
+    margin:24px 0 6px;
+  }
+
+  p{ margin-bottom:14px; }
+  p:last-child{ margin-bottom:0; }
+
+  ul{ margin:0 0 14px 0; padding-left:22px; }
+  li{ margin-bottom:8px; }
+
+  a{ color:var(--ink); text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:3px; }
+  a:hover{ color:var(--ink-soft); }
+
+  code{
+    font-family:var(--mono); font-size:.9em;
+    background:#f2f1ec; padding:1px 5px; border:1px solid var(--line);
+  }
+
+  .note{
+    font-family:var(--mono); font-size:11.5px; line-height:1.7;
+    letter-spacing:.02em; color:var(--ink-soft);
+    border-left:3px solid var(--line); padding-left:14px;
+    margin:18px 0;
+  }
+
+  /* Unfilled placeholders. Impossible to miss, deliberately. */
+  .fill{
+    background:var(--yellow);
+    border:1.5px solid var(--ink);
+    padding:1px 6px;
+    font-family:var(--mono); font-size:.86em; font-weight:600;
+    letter-spacing:.04em;
+  }
+
+  footer{
+    margin-top:clamp(56px,9vh,96px);
+    border-top:1.5px solid var(--ink);
+    padding:22px 0 56px;
+    display:flex; flex-wrap:wrap; gap:10px 24px;
+    justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink-soft); font-weight:600;
+  }
+  footer a{ color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--ink); }
+
+  @media print{
+    body{ font-size:11pt; }
+    .tldr{ border-left-width:3px; }
+    footer{ padding-bottom:0; }
+    a{ text-decoration:none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span>The Fiction Laboratory</span>
+    <a href="/">Back to the site</a>
+  </header>
+
+  <main>
+
+    <h1>How AI Is Used Here</h1>
+    <p class="effective">
+      Effective August 24, 2026 &nbsp;·&nbsp; Last updated August 24, 2026
+    </p>
+
+    <section class="tldr">
+      <h2>The short version</h2>
+      <p>
+        Yes, AI is used to make these packets. It is used for drafting and for research, it is used
+        <strong>a lot</strong>, and pretending otherwise would be insulting.
+      </p>
+      <p>
+        Here is what it does not do. It does not decide what goes in a packet. It does not get taken at
+        its word about a fact. It never sees anything about your students, because nothing about your
+        students is collected in the first place. And no packet is ever written about a book I have not
+        read myself, cover to cover, before a word is drafted.
+      </p>
+      <p>
+        That last rule is the one that matters most, so the rest of this page is mostly about how it is
+        enforced.
+      </p>
+    </section>
+
+    <h2>Who is writing this</h2>
+    <p>
+      The Fiction Laboratory is one person. I am Cory Ottenwess, a graphic designer of about thirty
+      years, training to teach high school biology. Everything here goes out under my name, which means
+      every error in it is mine and not a machine's.
+    </p>
+
+    <h2>What AI actually does</h2>
+
+    <h3>It drafts</h3>
+    <p>
+      Section prose, quiz questions, discussion prompts. I direct it, argue with it, rewrite it, and cut
+      a good deal of it.
+    </p>
+
+    <h3>It searches and organizes</h3>
+    <p>
+      Finding candidate sources, pulling a figure out of a paper, indexing what is in a research folder,
+      keeping a database consistent.
+    </p>
+
+    <h3>It writes the small tools</h3>
+    <p>
+      The scripts that build a question bank out of a document, or generate a book page, or check a
+      packet for problems before it goes to layout.
+    </p>
+
+    <p>
+      If you are reading a sentence in one of these packets, there is a reasonable chance a model
+      produced a version of it first. I am telling you that plainly because I would want to be told.
+    </p>
+
+    <h2>What it is never allowed to do</h2>
+
+    <h3>Write about a book I have not read</h3>
+    <p>
+      This is absolute and it is the whole foundation. Every title in the library carries a read status,
+      and a packet cannot be started until that status is verified. Books I read decades ago do not count
+      until I have read them again. Books I only know through adaptations or graphic novels do not count.
+      Two titles are currently blocked for exactly this reason, and they will stay blocked until I have
+      reread them, however inconvenient that is.
+    </p>
+
+    <h3>Be a source</h3>
+    <p>
+      AI research output is treated as unreliable by default. It is used to find sources, never to be
+      one. Every load-bearing fact in a packet is checked against the actual thing: the novel itself, a
+      published paper, a named interview. When a research summary and the book disagree, the book wins,
+      and this happens often enough that it is a routine step rather than an exception.
+    </p>
+    <p>
+      Recent examples from my own working notes include an invented detail about a novelist's doctoral
+      supervision, a teacher's name that turned out to be uncorroborated, and a claim about which article
+      of a treaty a plot point rests on. All three were caught by opening the primary source. None of
+      them reached a packet.
+    </p>
+
+    <h3>Grade anything, or touch a student</h3>
+    <p>
+      No packet contains software. Nothing phones home. The quiz is paper, the answer key is paper, and
+      the grading is yours.
+    </p>
+
+    <h3>Design the thing</h3>
+    <p>
+      Every page of every packet is laid out by hand, by me, in Affinity Publisher.
+    </p>
+
+    <h2>Your students' data</h2>
+    <p>
+      None of it is collected, so none of it goes anywhere, including into a model.
+    </p>
+    <p>
+      There is no login, no account, no analytics on this site, and no software in the packets. The one
+      piece of information this site will ever hold is an email address, and only if you type it in
+      yourself to be told when packets are ready. The full details are on the
+      <a href="/privacy.html">privacy page</a>.
+    </p>
+    <p>
+      If your district requires a vendor questionnaire before you can use classroom materials, this is
+      the short answer: there is no student data because there is no data collection.
+    </p>
+
+    <h2>Art and illustration</h2>
+    <p>
+      Nothing here is generated by AI. Not the page design, not the type, not a single image.
+    </p>
+    <p>
+      The layout is built by hand in Affinity Publisher. Where artwork comes from outside, it is licensed
+      from the human being who drew it. If an illustrator is commissioned for original work, they are
+      paid and credited by name.
+    </p>
+
+    <h2>Why bother saying any of this</h2>
+    <p>
+      Two reasons. The first is that you are a teacher deciding whether to put something in front of a
+      class, and you deserve to know how it was made. A vague answer is worse than a blunt one.
+    </p>
+    <p>
+      The second is more specific to this project. A curriculum built on science fiction novels is asking
+      students to think carefully about technology, including this one. It would be a poor look to do
+      that while being cagey about the tools on my own desk.
+    </p>
+    <p>
+      The honest position is that these are useful tools with real failure modes, that the failure mode I
+      care most about is confident invented detail, and that the defense against it is not avoiding the
+      tools. It is reading the book, opening the source, and checking.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      This page will be updated when the practice changes. Questions go to
+      <a href="mailto:Inquiries@fictionlaboratory.com">Inquiries@fictionlaboratory.com</a>.
+    </p>
+
+    <p class="note">
+      Written to be read, not to be defensible in the abstract. If something here is unclear or looks
+      wrong, say so and it gets fixed.
+    </p>
+
+  </main>
+
+  <footer>
+    <span><a href="/">The Fiction Laboratory</a>&nbsp;·&nbsp;<a href="/privacy.html">Privacy policy</a></span>
+    <span>© 2026 · No Amazon links, ever</span>
+  </footer>
+
+</div>
+</body>
+</html>

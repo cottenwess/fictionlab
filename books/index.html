@@ -70,16 +70,31 @@ h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem)
 .lede{color:var(--ink-soft);max-width:56ch;margin-top:20px}
 ul{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
 li{margin:0}
-a.card{display:block;height:100%;text-decoration:none;color:inherit;border:1.5px solid var(--ink);
-  background:var(--paper);padding:22px 22px 24px;transition:transform .25s ease, box-shadow .25s ease}
-a.card:hover{transform:translateY(-5px);box-shadow:7px 7px 0 var(--accent)}
-a.card:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.card{position:relative;display:flex;flex-direction:column;height:100%;color:inherit;
+  border:1.5px solid var(--ink);background:var(--paper);padding:22px 22px 24px;
+  transition:transform .25s ease, box-shadow .25s ease}
+.card:hover{transform:translateY(-5px);box-shadow:7px 7px 0 var(--accent)}
+h2.title a{color:inherit;text-decoration:none}
+h2.title a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+/* Stretches the title link over the card so a mouse can click anywhere, while
+   the buy link below sits above it and stays separately clickable. */
+h2.title a::after{content:"";position:absolute;inset:0;z-index:0}
+.offer{position:relative;z-index:1;margin:20px 0 0;padding-top:16px;
+  border-top:1.5px solid var(--line)}
+a.get{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+  padding:10px 18px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;transition:opacity .18s ease}
+a.get:hover{opacity:.78}
+a.get:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a.get.free{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.soon{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft)}
 .no{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
   color:var(--ink-soft);display:flex;justify-content:space-between;gap:10px}
 .no .code{color:var(--accent);font-weight:700}
 h2.title{font-family:var(--display);font-weight:500;font-size:1.55rem;line-height:1.08;margin:18px 0 6px}
 .author{font-size:.95rem;color:var(--ink-soft);font-style:italic}
-.blurb{margin:16px 0 0;color:var(--ink-soft);font-size:.94rem;line-height:1.5}
+.blurb{margin:16px 0 0;color:var(--ink-soft);font-size:.94rem;line-height:1.5;flex:1}
 footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
   padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
   display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
@@ -106,28 +121,67 @@ footer a:hover{opacity:.6}
 
 <ul>
     <li>
-      <a class="card" href="/books/fl-01-0001/" style="--accent:var(--cyan)">
+      <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0001</span><span class="code">100A</span></div>
-        <h2 class="title">The Time Machine</h2>
+        <h2 class="title"><a href="/books/fl-01-0001/">The Time Machine</a></h2>
         <div class="author">H.G. Wells, 1895</div>
         <p class="blurb">A Victorian scientist known only as the Time Traveller builds a machine that carries him along the fourth dimension into the far future.</p>
-      </a>
+        <p class="offer"><a class="get free" href="/books/fl-01-0001/">Download free</a></p>
+      </div>
     </li>
     <li>
-      <a class="card" href="/books/fl-01-0002/" style="--accent:var(--green)">
+      <div class="card" style="--accent:var(--green)">
         <div class="no"><span>Specimen 0002</span><span class="code">100A</span></div>
-        <h2 class="title">Frankenstein; or, The Modern Prometheus</h2>
+        <h2 class="title"><a href="/books/fl-01-0002/">Frankenstein; or, The Modern Prometheus</a></h2>
         <div class="author">Mary Shelley. Published anonymously; her name first appeared on the 1823 edition, 1818</div>
         <p class="blurb">An English explorer named Robert Walton, pushing north through the Arctic ice in search of a passage, pulls a dying man from a floe and writes down his story.</p>
-      </a>
+        <p class="offer"><a class="get free" href="/books/fl-01-0002/">Download free</a></p>
+      </div>
     </li>
     <li>
-      <a class="card" href="/books/fl-01-0004/" style="--accent:var(--orange)">
+      <div class="card" style="--accent:var(--yellow)">
+        <div class="no"><span>Specimen 0003</span><span class="code">200A</span></div>
+        <h2 class="title"><a href="/books/fl-01-0003/">Foundation</a></h2>
+        <div class="author">Isaac Asimov. No pseudonym on this title, 1951</div>
+        <p class="blurb">The Galactic Empire has stood for twelve thousand years and is about to fall, though almost no one can see it.</p>
+        <p class="offer"><a class="get" href="https://payhip.com/b/HoBw7">Buy &middot; $5</a></p>
+      </div>
+    </li>
+    <li>
+      <div class="card" style="--accent:var(--orange)">
         <div class="no"><span>Specimen 0004</span><span class="code">100A</span></div>
-        <h2 class="title">All Systems Red</h2>
+        <h2 class="title"><a href="/books/fl-01-0004/">All Systems Red</a></h2>
         <div class="author">Martha Wells, 2017</div>
         <p class="blurb">A SecUnit is a security construct, part cloned tissue and part machine, rented out by the Company along with the rest of the equipment.</p>
-      </a>
+        <p class="offer"><a class="get free" href="/books/fl-01-0004/">Download free</a></p>
+      </div>
+    </li>
+    <li>
+      <div class="card" style="--accent:var(--cyan)">
+        <div class="no"><span>Specimen 0005</span><span class="code">100A</span></div>
+        <h2 class="title"><a href="/books/fl-01-0005/">The Martian</a></h2>
+        <div class="author">Andy Weir, 2011</div>
+        <p class="blurb">Six days into the Ares 3 mission, a dust storm forces an emergency evacuation of the landing site.</p>
+        <p class="offer"><a class="get" href="https://payhip.com/b/yKBnY">Buy &middot; $5</a></p>
+      </div>
+    </li>
+    <li>
+      <div class="card" style="--accent:var(--cyan)">
+        <div class="no"><span>Specimen 0008</span><span class="code">100A</span></div>
+        <h2 class="title"><a href="/books/fl-01-0008/">Children of Time</a></h2>
+        <div class="author">Adrian Tchaikovsky. Born Adrian Czajkowski in 1972 and published under the respelling. He read zoology and psychology at Reading and spent most of his working life as a legal executive, writing in the evenings until 2018, 2015</div>
+        <p class="blurb">A terraforming project seeds a distant world with monkeys and a nanovirus built to accelerate their evolution, and the scientist running it means to be there when they wake up.</p>
+        <p class="offer"><a class="get" href="https://payhip.com/b/UeD0p">Buy &middot; $7</a></p>
+      </div>
+    </li>
+    <li>
+      <div class="card" style="--accent:var(--cyan)">
+        <div class="no"><span>Specimen 0009</span><span class="code">400A</span></div>
+        <h2 class="title"><a href="/books/fl-01-0009/">The Ministry for the Future</a></h2>
+        <div class="author">Kim Stanley Robinson, 2020</div>
+        <p class="blurb">A heat wave settles over Uttar Pradesh and does not lift.</p>
+        <p class="offer"><a class="get" href="https://payhip.com/b/t8FXn">Buy &middot; $7</a></p>
+      </div>
     </li>
 </ul>
 </div>
