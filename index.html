@@ -244,6 +244,10 @@
   .specimens{
     display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
   }
+  /* Four across, stated rather than inferred: auto-fit fell back to three at
+     the 992px content width and left the fourth card orphaned on its own row. */
+  .specimens.four{ grid-template-columns:repeat(4,1fr); }
+  @media (max-width:1000px){ .specimens.four{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:720px){ .specimens{ grid-template-columns:1fr; } }
 
   .card{
@@ -488,14 +492,14 @@
     </section>
 
     <div class="banner rise d5">
-      <span>Three introductory packets, finished and free. Six more in the lab.</span>
-      <a href="#notify">Get notified at launch &darr;</a>
+      <span>Four more packets are finished and on sale. Three are still free.</span>
+      <a href="/books/">Browse all seven &rarr;</a>
     </div>
 
     <section class="lab">
       <div class="sec-head rise d5">
         <h2>Currently in the Lab</h2>
-        <span class="free">First titles · Free at launch</span>
+        <span class="free">Three titles · Free, no email needed</span>
       </div>
 
       <div class="specimens">
@@ -529,8 +533,59 @@
 
       <p class="lab-note rise d8">These three are the introductory set. They are finished
       rather than previews, and each one is enough to run a unit on without waiting for
-      anything else. Six more titles are being built now. What a packet will cost, and
-      which books are next, is on the <a href="/pricing.html">pricing page</a>.</p>
+      anything else. They stay free, and they do not ask for an email address.</p>
+    </section>
+
+    <section class="lab">
+      <div class="sec-head rise d5">
+        <h2>Also in the library</h2>
+        <span class="free">Four titles · $5 to $7, one time</span>
+      </div>
+
+      <div class="specimens four">
+        <article class="card rise d6" style="--accent:var(--yellow)">
+          <div class="no"><span>Specimen 03</span><span class="code">200A · 500A</span></div>
+          <h3 class="title"><a href="/books/fl-01-0003/">Foundation</a></h3>
+          <div class="author">Isaac Asimov</div>
+          <span class="disc">Physical Sciences</span>
+          <span class="status done">Packet complete</span>
+          <a class="dl" href="https://payhip.com/b/HoBw7">Buy packet &middot; $5</a>
+        </article>
+
+        <article class="card rise d6" style="--accent:var(--cyan)">
+          <div class="no"><span>Specimen 05</span><span class="code">100A · 200A</span></div>
+          <h3 class="title"><a href="/books/fl-01-0005/">The Martian</a></h3>
+          <div class="author">Andy Weir</div>
+          <span class="disc">Biological Sciences</span>
+          <span class="status done">Packet complete</span>
+          <a class="dl" href="https://payhip.com/b/yKBnY">Buy packet &middot; $5</a>
+        </article>
+
+        <article class="card rise d7" style="--accent:var(--orange)">
+          <div class="no"><span>Specimen 08</span><span class="code">100A · 300A</span></div>
+          <h3 class="title"><a href="/books/fl-01-0008/">Children of Time</a></h3>
+          <div class="author">Adrian Tchaikovsky</div>
+          <span class="disc">Biological Sciences</span>
+          <span class="status done">Packet complete</span>
+          <a class="dl" href="https://payhip.com/b/UeD0p">Buy packet &middot; $7</a>
+        </article>
+
+        <article class="card rise d7" style="--accent:var(--cyan)">
+          <div class="no"><span>Specimen 09</span><span class="code">400A · 500A</span></div>
+          <h3 class="title"><a href="/books/fl-01-0009/">The Ministry for the Future</a></h3>
+          <div class="author">Kim Stanley Robinson</div>
+          <span class="disc">Geosciences</span>
+          <span class="status done">Packet complete</span>
+          <a class="dl" href="https://payhip.com/b/t8FXn">Buy packet &middot; $7</a>
+        </article>
+      </div>
+
+      <p class="lab-note rise d8">Same eight documents, same build, priced by the length of the
+      book. A packet is a one-time purchase: no subscription, no account, and yours to use with
+      every class you teach for as long as you teach it. Two more titles are in the lab. What
+      each one costs is on the <a href="/pricing.html">pricing page</a>, and every book has its
+      own <a href="/books/">page in the library</a> with borrowing links and the full source
+      list.</p>
     </section>
 
     <section class="lab kit-sec">

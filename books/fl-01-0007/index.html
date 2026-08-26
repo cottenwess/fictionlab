@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jurassic Park | The Fiction Laboratory</title>
+<meta name="description" content="Jurassic Park by Michael Crichton. Packet in development at The Fiction Laboratory.">
+<meta name="robots" content="noindex">
+<style>
+@font-face{
+    font-family:"Domine";
+    font-style:normal;
+    font-weight:400 700;
+    font-display:swap;
+    src:url("../../fonts/domine-latin-variable.woff2") format("woff2");
+  }
+@font-face{
+    font-family:"Roboto Mono";
+    font-style:normal;
+    font-weight:100 700;
+    font-display:swap;
+    src:url("../../fonts/roboto-mono-latin-variable.woff2") format("woff2");
+  }
+:root{
+    --paper:   #ffffff;
+    --ink:     #0d0d0d;
+    --ink-soft:#3a3a37;
+    --line:    #d9d7cd;
+
+    --cyan:   #00b8d4;
+    --green:  #5fb022;
+    --yellow: #ffe000;
+    --orange: #ff6b2c;
+
+    --serif: "Domine", Georgia, serif;
+    --display: "Domine", Georgia, serif;
+    --mono: "Roboto Mono", ui-monospace, monospace;
+  }
+body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(to right, rgba(13,13,13,.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(13,13,13,.035) 1px, transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 40%, #000 30%, transparent 100%);
+  }
+body::after{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.4;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
+  line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--cyan)}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 0}
+a{color:var(--ink)}
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px}
+header nav{display:flex;gap:18px}
+header nav a{border-bottom:1.5px solid var(--ink)}
+.kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
+.kicker::before{content:"";width:34px;height:1.5px;background:var(--accent)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2rem,5vw,3.4rem);
+  line-height:1.04;letter-spacing:-.01em;margin:0;max-width:20ch}
+.byline{font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--ink-soft);margin:18px 0 0}
+.meta{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin:30px 0 0;border-top:1.5px solid var(--ink);padding-top:14px}
+.lede{color:var(--ink-soft);max-width:60ch;font-size:1.06rem;margin:26px 0 0}
+.onward{display:flex;flex-wrap:wrap;gap:14px 26px;margin:38px 0 0;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.onward a{text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:1px}
+footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
+  padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
+  display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+footer .ethos{color:var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="wordmark" href="/">The Fiction Laboratory</a>
+  <nav>
+    <a href="/books/" aria-current="page">Books</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/#notify">Get notified</a>
+  </nav>
+</header>
+<div class="kicker">Specimen 0007 &middot; Not yet scheduled</div>
+<h1>Jurassic Park</h1>
+<p class="byline">Michael Crichton, 1990</p>
+<p class="meta">100A Biological Sciences · 200A Physical Sciences &middot; 101A Genetics · 202A Engineering</p>
+<p class="lede">This title is in the library's pool but is not being written yet. It needs a re-read first, and a packet is never drafted from memory of a book.</p>
+<p class="lede">The packets already finished are on the books page, three of them free and
+complete. They are the same eight documents this one will be.</p>
+<div class="onward">
+  <a href="/books/">Browse the library</a>
+  <a href="/pricing.html">What a packet costs</a>
+  <a href="/">The Fiction Laboratory</a>
+</div>
+</div>
+<footer>
+  <span class="ethos">Open a book. Open the lab.</span>
+  <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
+</footer>
+</body>
+</html>
