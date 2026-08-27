@@ -4,8 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jurassic Park | The Fiction Laboratory</title>
-<meta name="description" content="Jurassic Park by Michael Crichton. Packet in development at The Fiction Laboratory.">
-<meta name="robots" content="noindex">
+<meta name="description" content="Where to find Jurassic Park, the sources behind its Fiction Laboratory packet, and any corrections posted since printing.">
 <style>
 @font-face{
     font-family:"Domine";
@@ -55,30 +54,73 @@ body::after{
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
   line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--cyan)}
 .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 0}
+.col{max-width:62ch}
 a{color:var(--ink)}
+
 header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
   padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
-header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px}
+header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px;transition:opacity .18s ease}
+header a:hover{opacity:.6}
 header nav{display:flex;gap:18px}
 header nav a{border-bottom:1.5px solid var(--ink)}
+header nav a[aria-current]{border-bottom-color:var(--accent);border-bottom-width:3px}
+header a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
 .kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
   letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
 .kicker::before{content:"";width:34px;height:1.5px;background:var(--accent)}
-h1{font-family:var(--display);font-weight:500;font-size:clamp(2rem,5vw,3.4rem);
-  line-height:1.04;letter-spacing:-.01em;margin:0;max-width:20ch}
-.byline{font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--ink-soft);margin:18px 0 0}
-.meta{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-soft);margin:30px 0 0;border-top:1.5px solid var(--ink);padding-top:14px}
-.lede{color:var(--ink-soft);max-width:60ch;font-size:1.06rem;margin:26px 0 0}
-.onward{display:flex;flex-wrap:wrap;gap:14px 26px;margin:38px 0 0;
-  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-.onward a{text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:1px}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:0}
+.byline{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin:.5rem 0 0}
+
+dl.codes{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:26px 0 0;
+  border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:14px 0}
+dl.codes dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);padding-top:3px}
+dl.codes dd{margin:0;font-family:var(--mono);font-size:12px;line-height:1.5}
+dl.codes .code{color:var(--accent);font-weight:700}
+
+.summary{font-size:1.08rem;margin:26px 0 0}
+.lede{color:var(--ink-soft);max-width:62ch}
+
+section{margin-top:clamp(48px,7vh,78px)}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-top:1.5px solid var(--ink);
+  padding-top:14px;margin-bottom:26px}
+.sec-head h2{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;margin:0}
+.sec-head .count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-left:auto}
+h3{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);margin:34px 0 14px}
+
+ul.sources{list-style:none;margin:0;padding:0;max-width:70ch}
+ul.sources li{border-left:1.5px solid var(--ink);padding:2px 0 2px 18px;margin:0 0 22px;
+  transition:border-color .18s ease}
+ul.sources li:hover{border-left-color:var(--accent)}
+p.cite{margin:0}
+p.note{margin:.4rem 0 0;color:var(--ink-soft);font-size:.94rem}
+ul.downloads li{border-left-color:var(--accent)}
+a.buy{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+  border:none;padding:15px 30px;margin:4px 0 0;font-family:var(--mono);font-size:12px;
+  font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:opacity .18s ease}
+a.buy:hover{opacity:.78}
+a.buy:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a.dl{font-family:var(--mono);font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:2px}
+a[href^="http"],a[href^="/"]{text-decoration:none;border-bottom:1.5px solid var(--accent);
+  padding-bottom:1px;transition:opacity .18s ease}
+a[href^="http"]:hover,a[href^="/"]:hover{opacity:.6}
+
 footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
   padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
   display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 footer .ethos{color:var(--ink)}
-footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+footer a:hover{opacity:.6}
+.stamp{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:30px}
+@media (max-width:640px){dl.codes{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -91,19 +133,157 @@ footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--i
     <a href="/#notify">Get notified</a>
   </nav>
 </header>
-<div class="kicker">Specimen 0007 &middot; Not yet scheduled</div>
+
+<p class="kicker">Specimen FL-01.0007</p>
 <h1>Jurassic Park</h1>
 <p class="byline">Michael Crichton, 1990</p>
-<p class="meta">100A Biological Sciences · 200A Physical Sciences &middot; 101A Genetics · 202A Engineering</p>
-<p class="lede">This title is in the library's pool but is not being written yet. It needs a re-read first, and a packet is never drafted from memory of a book.</p>
-<p class="lede">The packets already finished are on the books page, three of them free and
-complete. They are the same eight documents this one will be.</p>
-<div class="onward">
-  <a href="/books/">Browse the library</a>
-  <a href="/pricing.html">What a packet costs</a>
-  <a href="/">The Fiction Laboratory</a>
+
+<dl class="codes">
+  <dt>Primary</dt>
+  <dd><span class="code">100A</span> Biological Sciences · <span class="code">200A</span> Physical Sciences</dd>
+  <dt>Focused</dt>
+  <dd><span class="code">101A</span> Genetics · <span class="code">202A</span> Engineering</dd>
+</dl>
+
+<div class="col">
+<p class="summary">A lawyer named Gennaro and a paleontologist named Alan Grant are flown out to Isla Nublar, an island off the Pacific coast of Costa Rica that John Hammond&#x27;s company, InGen, has quietly bought and stocked. Hammond&#x27;s geneticists, led by Henry Wu, have recovered dinosaur DNA from biting insects preserved in amber, patched the gaps in the broken sequences with frog DNA, and grown the animals on a resort island that has not opened yet. Grant brings the paleobotanist Ellie Sattler, Hammond brings his grandchildren Tim and Lex, and the mathematician Ian Malcolm comes along to argue, at length and in advance, that the park is a nonlinear system and is already failing. Every safeguard is a number in a computer: the electrified fences, the animal counts that only ever look for the expected total, and a lysine deficiency engineered into the animals so they cannot live off the island&#x27;s food. Dennis Nedry, the contractor who wrote that computer system, shuts it down to steal frozen embryos, and what follows is not one accident but a cascade. The velociraptors are the ones that hunt. The novel ends with Grant held in Costa Rica by a government that has noticed unknown animals moving inland from the coast in straight lines, eating lysine-rich crops.</p>
+<p class="lede">The Fiction Laboratory pairs science fiction novels with structured reading packets for science and English classes. This is the companion page for this title: where to find the book, every source behind its packet with live links, and any correction made since the packet was printed.</p>
 </div>
+
+<section>
+  <div class="sec-head"><h2>Where to find the book</h2></div>
+    <h3>Borrow it free</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Your public library.</strong> Almost every branch in the English-speaking world holds this one, usually in several copies and several formats. If yours is out, the hold will be short. Interlibrary loan is free if your branch does not carry it.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Libby.</strong> <a href="https://libbyapp.com">libbyapp.com</a>. Library ebooks and audiobooks on a phone or tablet, free with a library card. Both formats are widely licensed for this title, so a wait is unlikely.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Open Library.</strong> <a href="https://openlibrary.org">openlibrary.org</a>. Free borrowing accounts, one copy out at a time, no library card needed.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Your school library.</strong> More likely to hold this than anything else in the Core Library. Ask first; it is often on a shelf nobody has checked.</p>
+      </li>
+    </ul>
+    <h3>Read free, legally</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Not available.</strong> The novel was published in 1990 and is in copyright. Anything offering a free download is pirating it. The library is the free route, and for this title it is an easy one.</p>
+      </li>
+    </ul>
+    <h3>Buy it</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong><a href="https://bookshop.org">Bookshop.org</a>.</strong> <a href="https://bookshop.org">bookshop.org</a>. Orders support independent bookshops rather than a warehouse. Widely in print in paperback.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Your local bookshop.</strong> They can order it in a day or two if it is not on the shelf, and the money stays in your town.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Secondhand.</strong> This book sold in enormous numbers, which means used copies are everywhere and cheap. Charity shops, library sales and secondhand dealers almost always have one.</p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Sources</h2><span class="count">17 in total</span></div>
+  <p class="lede">Everything in the packet is built on real research, and most of it is free. If a claim sparks a question, go to the source and check it yourself. That is the whole idea.</p>
+    <h3>Start here</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Cano, Raúl J., et al. &quot;Amplification and Sequencing of DNA from a 120-135-Million-Year-Old Weevil.&quot; <em>Nature</em>, vol. 363, 1993, pp. 536-538.</p>
+        <p class="note">The paper that appeared to prove the novel right, published three years after it and the same month the film opened.</p>
+      </li>
+      <li>
+        <p class="cite">Austin, Jeremy J., et al. &quot;Problems of Reproducibility: Does Geologically Ancient DNA Survive in Amber-Preserved Insects?&quot; <em>Proceedings of the Royal Society B</em>, vol. 264, 1997, pp. 467-474.</p>
+        <p class="note">What happened next. Careful, unexcited and devastating: they tried to repeat the amber result and could not.</p>
+      </li>
+      <li>
+        <p class="cite">Allentoft, Morten E., et al. &quot;The Half-Life of DNA in Bone: Measuring Decay Kinetics in 158 Dated Fossils.&quot; <em>Proceedings of the Royal Society B</em>, vol. 279, no. 1748, 2012, pp. 4724-4733.</p>
+        <p class="note">The paper that ends the argument. Moa bones give the first real measurement of how fast DNA falls apart: a half-life of about 521 years, and nothing readable past roughly 1.5 million even in ideal cold.</p>
+      </li>
+    </ul>
+    <h3>The world the novel came out of</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><em>Diamond v. Chakrabarty</em>, 447 U.S. 303 (1980).</p>
+        <p class="note">The Supreme Court decides, five to four, that a living organism modified by human beings can be patented. Short, readable, and the legal floor under InGen.</p>
+      </li>
+      <li>
+        <p class="cite">Gleick, James. <em>Chaos: Making a New Science</em>. Viking, 1987.</p>
+        <p class="note">The book that put chaos theory in front of a general readership three years before this novel, and which Crichton credits in his acknowledgments. Go to this before any textbook.</p>
+      </li>
+      <li>
+        <p class="cite">Poinar, George, and Roberta Poinar. <em>The Quest for Life in Amber</em>. Addison-Wesley, 1994.</p>
+        <p class="note">By one of the authors of the 1993 paper, written at the height of the excitement. A period document now, and a lesson in how confident a field can sound before anyone has replicated it.</p>
+      </li>
+    </ul>
+    <h3>The author</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Crichton, Michael. &quot;Aliens Cause Global Warming.&quot; Michelin Lecture, California Institute of Technology, 17 Jan. 2003.</p>
+        <p class="note">The lecture attacking the idea of scientific consensus. Read it directly rather than reading about it, then read the next entry.</p>
+      </li>
+      <li>
+        <p class="cite">Brigham-Grette, Julie, et al. &quot;Petroleum Geologists&#x27; Award to Novelist Crichton Is Inappropriate.&quot; <em>Eos</em>, vol. 87, no. 36, 2006, p. 364.</p>
+        <p class="note">The scientific community answering in its own journal. Four hundred words, and a model of how a discipline states an objection.</p>
+      </li>
+    </ul>
+    <h3>Did not fit the printed page</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Allentoft, Morten E., et al. &quot;The Half-Life of DNA in Bone.&quot;</strong> <em>Proceedings of the Royal Society B</em>, vol. 279, no. 1748, 2012. <a href="https://royalsocietypublishing.org">royalsocietypublishing.org</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Austin, Jeremy J., et al. &quot;Problems of Reproducibility.&quot;</strong> <em>Proceedings of the Royal Society B</em>, vol. 264, 1997. <a href="https://royalsocietypublishing.org">royalsocietypublishing.org</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Cano, Raúl J., et al. &quot;Amplification and Sequencing of DNA from a 120-135-Million-Year-Old Weevil.&quot;</strong> <em>Nature</em>, vol. 363, 1993. <a href="https://nature.com">nature.com</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong><em>Diamond v. Chakrabarty</em>, 447 U.S. 303 (1980).</strong> <a href="https://supreme.justia.com/cases/federal/us/447/303">supreme.justia.com/cases/federal/us/447/303</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Crichton, Michael. &quot;Aliens Cause Global Warming.&quot;</strong> Michelin Lecture, Caltech, 17 Jan. 2003. Full text hosted on the late Stephen Schneider&#x27;s Stanford pages, which is worth noting: Schneider was one of the climate scientists on the other side of the argument, and he published his opponent&#x27;s lecture in full. <a href="https://stephenschneider.stanford.edu">stephenschneider.stanford.edu</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Brigham-Grette, Julie, et al. &quot;Petroleum Geologists&#x27; Award to Novelist Crichton Is Inappropriate.&quot;</strong> <em>Eos</em>, vol. 87, no. 36, 2006. <a href="https://agupubs.onlinelibrary.wiley.com">agupubs.onlinelibrary.wiley.com</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Hansen, James. &quot;Michael Crichton&#x27;s &#x27;Scientific Method&#x27;.&quot;</strong> 27 Sept. 2005. <a href="https://columbia.edu/~jeh1">columbia.edu/~jeh1</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>&quot;Name-Calling in Michael Crichton&#x27;s <em>Next</em>.&quot;</strong> <em>All Things Considered</em>, NPR, 15 Dec. 2006. <a href="https://npr.org">npr.org</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>&quot;Michael Crichton: Biography.&quot;</strong> <a href="https://michaelcrichton.com/biography">michaelcrichton.com/biography</a></p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Updates and corrections</h2></div>
+  <div class="col">
+    <p class="lede">Nothing yet. When a link here dies or a finding is superseded, the correction is posted here rather than left wrong in print.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="sec-head"><h2>The packet</h2><span class="count">$5 &middot; one time</span></div>
+  <p class="lede">Eight documents as PDFs, in two archives: the complete packet, and a student
+  set holding only the four documents a class should see. Yours to use with every class you
+  teach, this year and every year after. No subscription and no account.</p>
+  <p><a class="buy" href="https://payhip.com/b/h1gIA">Buy the packet &middot; $5</a></p>
+  <p class="note">Checkout is handled by Payhip. Nothing is loaded from them until you follow
+  this link.</p>
+</section>
+
+<p class="stamp">Last reviewed 2026-08-27 &middot; Specimen FL-01.0007</p>
 </div>
+
 <footer>
   <span class="ethos">Open a book. Open the lab.</span>
   <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
