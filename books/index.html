@@ -95,6 +95,30 @@ a.get.free{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1.5px
 h2.title{font-family:var(--display);font-weight:500;font-size:1.55rem;line-height:1.08;margin:18px 0 6px}
 .author{font-size:.95rem;color:var(--ink-soft);font-style:italic}
 .blurb{margin:16px 0 0;color:var(--ink-soft);font-size:.94rem;line-height:1.5;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin:14px 0 0}
+.tag{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.12em;
+  padding:3px 6px;border:1.2px solid var(--line);color:var(--ink-soft);cursor:help}
+.tag.pri{border-color:var(--accent);color:var(--ink)}
+
+.filters{margin:34px 0 0;border-top:1.5px solid var(--ink);padding-top:18px}
+.frow{display:flex;align-items:baseline;gap:16px;margin:0 0 12px;flex-wrap:wrap}
+.flabel{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-soft);flex:none;width:66px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--paper);color:var(--ink-soft);border:1.5px solid var(--line);
+  padding:6px 10px;cursor:pointer;transition:border-color .15s ease,color .15s ease}
+.chip b{font-weight:700;color:var(--ink)}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip[aria-pressed="true"] b{color:var(--paper)}
+.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.fstatus{margin-top:2px}
+.chip.clear{border-style:dashed}
+.count{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft)}
+li.bk[hidden]{display:none}
+@media (max-width:640px){.flabel{width:100%}}
 footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
   padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
   display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
@@ -119,130 +143,178 @@ footer a:hover{opacity:.6}
 <h1>Books</h1>
 <p class="lede">Every title with a packet. Each page carries where to find the book, the full source list behind its packet with live links, and any correction posted since the packet was printed.</p>
 
-<ul>
-    <li>
+  <div class="filters" id="filters" hidden>
+    <div class="frow">
+      <span class="flabel">Primary</span>
+      <div class="chips">
+        <button type="button" class="chip" data-group="pri" data-code="100A" aria-pressed="false"><b>100A</b> Biological Sciences</button>
+        <button type="button" class="chip" data-group="pri" data-code="200A" aria-pressed="false"><b>200A</b> Physical Sciences</button>
+        <button type="button" class="chip" data-group="pri" data-code="300A" aria-pressed="false"><b>300A</b> Computer Science</button>
+        <button type="button" class="chip" data-group="pri" data-code="400A" aria-pressed="false"><b>400A</b> Geosciences</button>
+        <button type="button" class="chip" data-group="pri" data-code="500A" aria-pressed="false"><b>500A</b> Social Sciences</button>
+      </div>
+    </div>
+    <div class="frow">
+      <span class="flabel">Focused</span>
+      <div class="chips">
+        <button type="button" class="chip" data-group="foc" data-code="101A" aria-pressed="false"><b>101A</b> Genetics</button>
+        <button type="button" class="chip" data-group="foc" data-code="103A" aria-pressed="false"><b>103A</b> Biological Ecology</button>
+        <button type="button" class="chip" data-group="foc" data-code="104A" aria-pressed="false"><b>104A</b> Medicine</button>
+        <button type="button" class="chip" data-group="foc" data-code="105A" aria-pressed="false"><b>105A</b> Neuroscience</button>
+        <button type="button" class="chip" data-group="foc" data-code="106A" aria-pressed="false"><b>106A</b> Astrobiology</button>
+        <button type="button" class="chip" data-group="foc" data-code="201A" aria-pressed="false"><b>201A</b> Astronomy</button>
+        <button type="button" class="chip" data-group="foc" data-code="202A" aria-pressed="false"><b>202A</b> Engineering</button>
+        <button type="button" class="chip" data-group="foc" data-code="301A" aria-pressed="false"><b>301A</b> Robotics</button>
+        <button type="button" class="chip" data-group="foc" data-code="302A" aria-pressed="false"><b>302A</b> Linguistics</button>
+        <button type="button" class="chip" data-group="foc" data-code="401A" aria-pressed="false"><b>401A</b> Geology</button>
+        <button type="button" class="chip" data-group="foc" data-code="404A" aria-pressed="false"><b>404A</b> Environmental Ecology</button>
+        <button type="button" class="chip" data-group="foc" data-code="501A" aria-pressed="false"><b>501A</b> Political Science</button>
+      </div>
+    </div>
+    <div class="frow fstatus">
+      <button type="button" class="chip clear" id="clearFilters">Clear</button>
+      <span class="count" id="filterCount" aria-live="polite"></span>
+    </div>
+  </div>
+
+<ul id="booklist">
+    <li class="bk" data-pri="100A 200A 500A" data-foc="103A 201A 401A 501A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0001</span><span class="code">100A</span></div>
         <h2 class="title"><a href="/books/fl-01-0001/">The Time Machine</a></h2>
         <div class="author">H.G. Wells, 1895</div>
         <p class="blurb">A Victorian scientist known only as the Time Traveller builds a machine that carries him along the fourth dimension into the far future.</p>
+        <p class="tags"><span class="tag pri" title="Biological Sciences">100A</span><span class="tag pri" title="Physical Sciences">200A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Biological Ecology">103A</span><span class="tag foc" title="Astronomy">201A</span><span class="tag foc" title="Geology">401A</span><span class="tag foc" title="Political Science">501A</span></p>
         <p class="offer"><a class="get free" href="/books/fl-01-0001/">Download free</a></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="100A 500A" data-foc="104A 105A">
       <div class="card" style="--accent:var(--green)">
         <div class="no"><span>Specimen 0002</span><span class="code">100A</span></div>
         <h2 class="title"><a href="/books/fl-01-0002/">Frankenstein; or, The Modern Prometheus</a></h2>
         <div class="author">Mary Shelley, 1818</div>
         <p class="blurb">An English explorer named Robert Walton, pushing north through the Arctic ice in search of a passage, pulls a dying man from a floe and writes down his story.</p>
+        <p class="tags"><span class="tag pri" title="Biological Sciences">100A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Medicine">104A</span><span class="tag foc" title="Neuroscience">105A</span></p>
         <p class="offer"><a class="get free" href="/books/fl-01-0002/">Download free</a></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="200A 500A" data-foc="501A">
       <div class="card" style="--accent:var(--yellow)">
         <div class="no"><span>Specimen 0003</span><span class="code">200A</span></div>
         <h2 class="title"><a href="/books/fl-01-0003/">Foundation</a></h2>
         <div class="author">Isaac Asimov, 1951</div>
         <p class="blurb">The Galactic Empire has stood for twelve thousand years and is about to fall, though almost no one can see it.</p>
+        <p class="tags"><span class="tag pri" title="Physical Sciences">200A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Political Science">501A</span></p>
         <p class="offer"><a class="get" href="https://payhip.com/b/HoBw7">Buy &middot; $5</a></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="100A 300A 500A" data-foc="301A">
       <div class="card" style="--accent:var(--orange)">
         <div class="no"><span>Specimen 0004</span><span class="code">100A</span></div>
         <h2 class="title"><a href="/books/fl-01-0004/">All Systems Red</a></h2>
         <div class="author">Martha Wells, 2017</div>
         <p class="blurb">A SecUnit is a security construct, part cloned tissue and part machine, rented out by the Company along with the rest of the equipment.</p>
+        <p class="tags"><span class="tag pri" title="Biological Sciences">100A</span><span class="tag pri" title="Computer Science">300A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Robotics">301A</span></p>
         <p class="offer"><a class="get free" href="/books/fl-01-0004/">Download free</a></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="100A 200A" data-foc="103A 106A 201A 202A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0005</span><span class="code">100A</span></div>
         <h2 class="title"><a href="/books/fl-01-0005/">The Martian</a></h2>
         <div class="author">Andy Weir, 2011</div>
         <p class="blurb">Six days into the Ares 3 mission, a dust storm forces an emergency evacuation of the landing site.</p>
+        <p class="tags"><span class="tag pri" title="Biological Sciences">100A</span><span class="tag pri" title="Physical Sciences">200A</span><span class="tag foc" title="Biological Ecology">103A</span><span class="tag foc" title="Astrobiology">106A</span><span class="tag foc" title="Astronomy">201A</span><span class="tag foc" title="Engineering">202A</span></p>
         <p class="offer"><a class="get" href="https://payhip.com/b/yKBnY">Buy &middot; $5</a></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="200A 500A" data-foc="501A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0006</span><span class="code">200A</span></div>
         <h2 class="title"><a href="/books/fl-01-0006/">Ender&#x27;s Game</a></h2>
         <div class="author">Orson Scott Card, 1985</div>
         <p class="blurb"></p>
+        <p class="tags"><span class="tag pri" title="Physical Sciences">200A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Political Science">501A</span></p>
         <p class="offer"><span class="soon">Not yet on sale</span></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="100A 200A" data-foc="101A 202A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0007</span><span class="code">100A</span></div>
         <h2 class="title"><a href="/books/fl-01-0007/">Jurassic Park</a></h2>
         <div class="author">Michael Crichton, 1990</div>
         <p class="blurb"></p>
+        <p class="tags"><span class="tag pri" title="Biological Sciences">100A</span><span class="tag pri" title="Physical Sciences">200A</span><span class="tag foc" title="Genetics">101A</span><span class="tag foc" title="Engineering">202A</span></p>
         <p class="offer"><span class="soon">Not yet on sale</span></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="100A 300A" data-foc="101A 103A 105A 302A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0008</span><span class="code">100A</span></div>
         <h2 class="title"><a href="/books/fl-01-0008/">Children of Time</a></h2>
         <div class="author">Adrian Tchaikovsky, 2015</div>
         <p class="blurb">A terraforming project seeds a distant world with monkeys and a nanovirus built to accelerate their evolution, and the scientist running it means to be there when they wake up.</p>
+        <p class="tags"><span class="tag pri" title="Biological Sciences">100A</span><span class="tag pri" title="Computer Science">300A</span><span class="tag foc" title="Genetics">101A</span><span class="tag foc" title="Biological Ecology">103A</span><span class="tag foc" title="Neuroscience">105A</span><span class="tag foc" title="Linguistics">302A</span></p>
         <p class="offer"><a class="get" href="https://payhip.com/b/UeD0p">Buy &middot; $7</a></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="400A 500A" data-foc="404A 501A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0009</span><span class="code">400A</span></div>
         <h2 class="title"><a href="/books/fl-01-0009/">The Ministry for the Future</a></h2>
         <div class="author">Kim Stanley Robinson, 2020</div>
         <p class="blurb">A heat wave settles over Uttar Pradesh and does not lift.</p>
+        <p class="tags"><span class="tag pri" title="Geosciences">400A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Environmental Ecology">404A</span><span class="tag foc" title="Political Science">501A</span></p>
         <p class="offer"><a class="get" href="https://payhip.com/b/t8FXn">Buy &middot; $7</a></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="400A 500A" data-foc="404A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0010</span><span class="code">400A</span></div>
         <h2 class="title"><a href="/books/fl-01-0010/">Parable of the Sower</a></h2>
         <div class="author">Octavia E. Butler, 1993</div>
         <p class="blurb">Lauren Oya Olamina is fifteen and lives behind a wall in Robledo, twenty miles from Los Angeles, in a cul-de-sac of families who grow their own food and take turns on night watch.</p>
+        <p class="tags"><span class="tag pri" title="Geosciences">400A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Environmental Ecology">404A</span></p>
         <p class="offer"><span class="soon">Not yet on sale</span></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="100A 500A" data-foc="105A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0011</span><span class="code">100A</span></div>
         <h2 class="title"><a href="/books/fl-01-0011/">Flowers for Algernon</a></h2>
         <div class="author">Daniel Keyes, 1966</div>
         <p class="blurb">Charlie Gordon is thirty-two, works at Donner&#x27;s bakery for eleven dollars a week, and goes three nights a week to a class for adults with intellectual disabilities at the Beekman school, because he wants more than anything to be smart.</p>
+        <p class="tags"><span class="tag pri" title="Biological Sciences">100A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Neuroscience">105A</span></p>
         <p class="offer"><span class="soon">Not yet on sale</span></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="300A 500A" data-foc="105A 302A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0012</span><span class="code">300A</span></div>
         <h2 class="title"><a href="/books/fl-01-0012/">Neuromancer</a></h2>
         <div class="author">William Gibson, 1984</div>
         <p class="blurb">Case was one of the best data thieves in the Sprawl until he stole from his employers, who damaged his nervous system with a wartime Russian mycotoxin so precisely that he could never jack into cyberspace again.</p>
+        <p class="tags"><span class="tag pri" title="Computer Science">300A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Neuroscience">105A</span><span class="tag foc" title="Linguistics">302A</span></p>
         <p class="offer"><span class="soon">Not yet on sale</span></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="100A 200A" data-foc="201A 106A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0013</span><span class="code">100A</span></div>
         <h2 class="title"><a href="/books/fl-01-0013/">Childhood&#x27;s End</a></h2>
         <div class="author">Arthur C. Clarke, 1953</div>
         <p class="blurb">Enormous ships appear over every major city and human history stops being human.</p>
+        <p class="tags"><span class="tag pri" title="Biological Sciences">100A</span><span class="tag pri" title="Physical Sciences">200A</span><span class="tag foc" title="Astronomy">201A</span><span class="tag foc" title="Astrobiology">106A</span></p>
         <p class="offer"><span class="soon">Not yet on sale</span></p>
       </div>
     </li>
-    <li>
+    <li class="bk" data-pri="200A 500A" data-foc="501A">
       <div class="card" style="--accent:var(--cyan)">
         <div class="no"><span>Specimen 0014</span><span class="code">200A</span></div>
         <h2 class="title"><a href="/books/fl-01-0014/">A Canticle for Leibowitz</a></h2>
         <div class="author">Walter M. Miller, Jr., 1959</div>
         <p class="blurb">Centuries after a nuclear war remembered as the Flame Deluge, and after the Simplification that followed it, when mobs killed first the learned and then the merely literate, an abbey in the southwestern desert keeps what its founder saved.</p>
+        <p class="tags"><span class="tag pri" title="Physical Sciences">200A</span><span class="tag pri" title="Social Sciences">500A</span><span class="tag foc" title="Political Science">501A</span></p>
         <p class="offer"><span class="soon">Not yet on sale</span></p>
       </div>
     </li>
@@ -253,5 +325,56 @@ footer a:hover{opacity:.6}
   <span class="ethos">Open a book. Open the lab.</span>
   <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
 </footer>
+
+<script>
+(function () {
+  var bar = document.getElementById('filters');
+  var list = document.getElementById('booklist');
+  if (!bar || !list) return;
+  // The bar ships hidden and is revealed here, so a browser without
+  // JavaScript sees the full catalog rather than controls that do nothing.
+  bar.hidden = false;
+
+  var chips = [].slice.call(bar.querySelectorAll('.chip[data-code]'));
+  var books = [].slice.call(list.querySelectorAll('.bk'));
+  var count = document.getElementById('filterCount');
+  var clear = document.getElementById('clearFilters');
+
+  function selected() {
+    return chips.filter(function (c) { return c.getAttribute('aria-pressed') === 'true'; })
+                .map(function (c) { return c.getAttribute('data-code'); });
+  }
+
+  function apply() {
+    var on = selected();
+    var shown = 0;
+    books.forEach(function (b) {
+      var codes = ((b.dataset.pri || '') + ' ' + (b.dataset.foc || '')).split(/\s+/);
+      // Any selected code matches. Requiring all of them would return an
+      // empty shelf for most pairs, which reads as a broken filter rather
+      // than as a narrow one.
+      var hit = on.length === 0 || on.some(function (c) { return codes.indexOf(c) !== -1; });
+      b.hidden = !hit;
+      if (hit) shown++;
+    });
+    count.textContent = on.length === 0
+      ? books.length + ' titles'
+      : shown + ' of ' + books.length;
+    clear.hidden = on.length === 0;
+  }
+
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      apply();
+    });
+  });
+  clear.addEventListener('click', function () {
+    chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+    apply();
+  });
+  apply();
+})();
+</script>
 </body>
 </html>
