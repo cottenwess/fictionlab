@@ -4,8 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Parable of the Sower | The Fiction Laboratory</title>
-<meta name="description" content="Parable of the Sower by Octavia E. Butler. Packet in development at The Fiction Laboratory.">
-<meta name="robots" content="noindex">
+<meta name="description" content="Where to find Parable of the Sower, the sources behind its Fiction Laboratory packet, and any corrections posted since printing.">
 <style>
 @font-face{
     font-family:"Domine";
@@ -55,55 +54,268 @@ body::after{
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);
   line-height:1.62;-webkit-font-smoothing:antialiased;--accent:var(--cyan)}
 .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,64px) 0}
+.col{max-width:62ch}
 a{color:var(--ink)}
+
 header{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
   padding:34px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
-header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px}
+header a{text-decoration:none;border-bottom:1.5px solid transparent;padding-bottom:1px;transition:opacity .18s ease}
+header a:hover{opacity:.6}
 header nav{display:flex;gap:18px}
 header nav a{border-bottom:1.5px solid var(--ink)}
+header nav a[aria-current]{border-bottom-color:var(--accent);border-bottom-width:3px}
+header a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.brand{display:flex;align-items:center;gap:13px}.brand .mark{width:30px;height:30px;flex:none;display:block;fill:var(--ink)}header a.mark-link{display:block;line-height:0;border-bottom:none;padding-bottom:0}@media (max-width:560px){.brand .mark{width:26px;height:26px}}
+
 .kicker{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;
   letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin:56px 0 14px}
 .kicker::before{content:"";width:34px;height:1.5px;background:var(--accent)}
-h1{font-family:var(--display);font-weight:500;font-size:clamp(2rem,5vw,3.4rem);
-  line-height:1.04;letter-spacing:-.01em;margin:0;max-width:20ch}
-.byline{font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--ink-soft);margin:18px 0 0}
-.meta{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-soft);margin:30px 0 0;border-top:1.5px solid var(--ink);padding-top:14px}
-.lede{color:var(--ink-soft);max-width:60ch;font-size:1.06rem;margin:26px 0 0}
-.onward{display:flex;flex-wrap:wrap;gap:14px 26px;margin:38px 0 0;
-  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-.onward a{text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:1px}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.6vw,4rem);
+  line-height:1.02;letter-spacing:-.01em;margin:0}
+.byline{font-family:var(--display);font-style:italic;font-size:1.15rem;color:var(--ink-soft);margin:.5rem 0 0}
+
+dl.codes{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:26px 0 0;
+  border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);padding:14px 0}
+dl.codes dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);padding-top:3px}
+dl.codes dd{margin:0;font-family:var(--mono);font-size:12px;line-height:1.5}
+dl.codes .code{color:var(--accent);font-weight:700}
+
+.summary{font-size:1.08rem;margin:26px 0 0}
+.lede{color:var(--ink-soft);max-width:62ch}
+
+section{margin-top:clamp(48px,7vh,78px)}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-top:1.5px solid var(--ink);
+  padding-top:14px;margin-bottom:26px}
+.sec-head h2{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;margin:0}
+.sec-head .count{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);margin-left:auto}
+h3{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-soft);margin:34px 0 14px}
+
+ul.sources{list-style:none;margin:0;padding:0;max-width:70ch}
+ul.sources li{border-left:1.5px solid var(--ink);padding:2px 0 2px 18px;margin:0 0 22px;
+  transition:border-color .18s ease}
+ul.sources li:hover{border-left-color:var(--accent)}
+p.cite{margin:0}
+p.note{margin:.4rem 0 0;color:var(--ink-soft);font-size:.94rem}
+ul.downloads li{border-left-color:var(--accent)}
+a.buy{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+  border:none;padding:15px 30px;margin:4px 0 0;font-family:var(--mono);font-size:12px;
+  font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:opacity .18s ease}
+a.buy:hover{opacity:.78}
+a.buy:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a.dl{font-family:var(--mono);font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--accent);padding-bottom:2px}
+a[href^="http"],a[href^="/"]{text-decoration:none;border-bottom:1.5px solid var(--accent);
+  padding-bottom:1px;transition:opacity .18s ease}
+a[href^="http"]:hover,a[href^="/"]:hover{opacity:.6}
+
 footer{position:relative;z-index:1;max-width:1120px;margin:clamp(60px,9vh,110px) auto 0;
   padding:22px clamp(20px,5vw,64px) 56px;border-top:1.5px solid var(--ink);
   display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 footer .ethos{color:var(--ink)}
-footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:1px}
+footer a:hover{opacity:.6}
+.stamp{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:30px}
+@media (max-width:640px){dl.codes{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <a class="wordmark" href="/">The Fiction Laboratory</a>
+  <div class="brand">
+    <a class="mark-link" href="/" aria-label="The Fiction Laboratory, home"><svg class="mark" viewBox="151 108 721 807" aria-hidden="true" focusable="false"><g transform="matrix(0.822605,0,0,0.822605,-935.223551,-1187.880688)"> <path d="M2033.207,1923.368C2032.378,1923.265 2031.703,1922.652 2031.521,1921.837C2031.338,1921.021 2031.687,1920.179 2032.394,1919.732C2056.986,1904.086 2128.402,1858.782 2157.2,1838.847C2163.281,1834.614 2171.159,1833.948 2177.865,1837.099C2184.572,1840.25 2189.087,1846.739 2189.712,1854.122C2195.313,1922.427 2198.24,1992.877 2198.24,2064.881C2198.24,2146.204 2194.506,2225.544 2187.403,2302.051C2186.839,2308.065 2183.681,2313.534 2178.755,2317.03C2116.05,2361.435 2049.206,2404.338 1978.778,2445C1934.966,2470.295 1891.095,2493.955 1847.388,2515.954C1843.307,2518 1838.456,2517.786 1834.571,2515.388C1830.685,2512.99 1828.32,2508.75 1828.32,2504.184L1828.319,2096.038C1828.319,2088.2 1821.965,2081.846 1814.127,2081.846L1814.125,2081.846C1806.746,2081.846 1800.683,2087.478 1799.998,2094.677L1799.998,2095.965L1799.934,2095.965L1799.934,2096.038L1799.934,2550.04C1799.934,2554.523 1796.3,2558.156 1791.818,2558.156L1726.815,2558.156C1722.333,2558.156 1718.7,2554.523 1718.7,2550.04L1718.7,2545.709C1718.7,2541.746 1716.426,2538.134 1712.853,2536.42C1655.424,2508.826 1597.589,2478.332 1539.855,2445C1469.428,2404.338 1402.583,2361.435 1339.878,2317.029C1334.952,2313.534 1331.795,2308.065 1331.23,2302.051C1324.127,2225.544 1320.393,2146.204 1320.393,2064.881C1320.393,1992.877 1323.32,1922.427 1328.922,1854.122C1329.546,1846.739 1334.062,1840.249 1340.768,1837.099C1347.474,1833.948 1355.352,1834.614 1361.434,1838.847C1417.835,1877.89 1477.438,1915.688 1539.855,1951.725C1598.552,1985.613 1657.353,2016.568 1715.726,2044.523C1717.398,2045.323 1719.404,2044.789 1720.457,2043.264C1722.266,2040.538 1725.367,2038.756 1728.884,2038.756L1789.814,2038.756C1793.324,2038.756 1796.419,2040.531 1798.25,2043.233C1799.297,2044.743 1801.287,2045.271 1802.945,2044.477C1850.503,2021.723 1898.338,1996.963 1946.167,1970.246C1951.289,1967.375 1957.549,1967.435 1962.616,1970.403C1967.682,1973.371 1970.795,1978.803 1970.795,1984.674C1970.797,2045.251 1970.797,2186.17 1970.797,2240.474C1970.797,2243.025 1972.527,2245.252 1974.999,2245.882C1977.471,2246.513 1980.056,2245.387 1981.278,2243.148L2001.709,2205.708C2003.697,2202.066 2007.129,2199.432 2011.162,2198.455C2015.194,2197.477 2019.452,2198.247 2022.887,2200.575L2039.434,2211.79C2041.144,2212.95 2043.355,2213.069 2045.18,2212.101C2047.006,2211.133 2048.147,2209.236 2048.147,2207.17L2048.147,1943.069C2048.147,1937.694 2046.71,1928.757 2038.931,1925.028C2037.099,1924.15 2035.163,1923.591 2033.207,1923.368ZM2123.745,1773.909C2128.313,1777.039 2130.857,1782.373 2130.413,1787.892C2129.969,1793.411 2126.606,1798.271 2121.596,1800.63C2079.732,1820.069 2013.823,1841.588 1915.926,1851.554C1808.225,1862.517 1771.046,1949.926 1761.832,1977.935L1761.858,1977.51L1761.802,1977.707L1761.784,1978.081L1761.486,1978.999L1761.479,1978.854L1761.454,1978.944L1761.462,1979.076C1761.316,1979.53 1761.179,1979.965 1761.049,1980.382L1759.317,1986.537L1758.41,1983.142C1752.727,1963.349 1718.417,1863.332 1602.708,1851.554C1504.81,1841.588 1438.901,1820.069 1397.044,1800.615C1392.04,1798.259 1388.68,1793.404 1388.237,1787.891C1387.793,1782.378 1390.335,1777.049 1394.898,1773.923C1444.403,1740.136 1496.445,1707.39 1550.731,1676.048C1611.709,1640.842 1672.805,1608.975 1733.356,1580.526C1749.81,1572.841 1768.823,1572.841 1785.277,1580.526C1845.828,1608.975 1906.925,1640.842 1967.903,1676.048C2022.189,1707.39 2074.23,1740.136 2123.745,1773.909ZM1723.317,1835.13C1717.433,1823.052 1714.131,1809.488 1714.131,1795.159C1714.131,1744.677 1755.116,1703.691 1805.599,1703.691C1848.465,1703.691 1884.484,1733.242 1894.376,1773.067C1901.601,1764.943 1908.317,1756.188 1914.461,1746.879C1877.727,1691.215 1820.544,1655.411 1756.361,1655.411C1692.179,1655.411 1634.995,1691.215 1598.262,1746.879C1628.554,1792.782 1672.754,1825.18 1723.317,1835.13ZM1805.599,1762.856C1787.77,1762.856 1773.296,1777.33 1773.296,1795.159C1773.296,1812.988 1787.77,1827.462 1805.599,1827.462C1823.428,1827.462 1837.902,1812.988 1837.902,1795.159C1837.902,1777.33 1823.428,1762.856 1805.599,1762.856Z"/> </g></svg></a>
+    <a class="wordmark" href="/">The Fiction Laboratory</a>
+  </div>
   <nav>
     <a href="/books/" aria-current="page">Books</a>
     <a href="/pricing.html">Pricing</a>
     <a href="/#notify">Get notified</a>
   </nav>
 </header>
-<div class="kicker">Specimen 0010 &middot; In development</div>
+
+<p class="kicker">Specimen FL-01.0010</p>
 <h1>Parable of the Sower</h1>
 <p class="byline">Octavia E. Butler, 1993</p>
-<p class="meta">400A Geosciences · 500A Social Sciences &middot; 404A Environmental Ecology</p>
-<p class="lede">This packet has not been written yet, and there is no date on it. A packet ships complete or it does not ship, so nothing is promised here that the work cannot keep.</p>
-<p class="lede">The packets already finished are on the books page, three of them free and
-complete. They are the same eight documents this one will be.</p>
-<div class="onward">
-  <a href="/books/">Browse the library</a>
-  <a href="/pricing.html">What a packet costs</a>
-  <a href="/">The Fiction Laboratory</a>
+
+<dl class="codes">
+  <dt>Primary</dt>
+  <dd><span class="code">400A</span> Geosciences · <span class="code">500A</span> Social Sciences</dd>
+  <dt>Focused</dt>
+  <dd><span class="code">404A</span> Environmental Ecology</dd>
+</dl>
+
+<div class="col">
+<p class="summary">Lauren Oya Olamina is fifteen and lives behind a wall in Robledo, twenty miles from Los Angeles, in a cul-de-sac of families who grow their own food and take turns on night watch. Outside the wall, water costs more than gasoline, a drug called pyro makes watching a fire better than sex, and the country has not so much collapsed as stopped being maintained. Lauren has hyperempathy syndrome, a delusion inherited from her mother&#x27;s drug use: she feels the pain she sees, which in a world this violent is a disability she has to hide. Her father is a Baptist minister. She has quietly stopped believing what he believes, and is writing her own scripture, Earthseed, whose first lines say that God is Change and whose Destiny is to take root among the stars. When the wall fails and the neighborhood burns, Lauren walks north up the freeway with two survivors, Harry Baiter and Zahra Moss, gathering strangers as she goes and teaching them Earthseed on the road. One of them is Taylor Franklin Bankole, a doctor decades older who owns land in the north. The novel ends with the group burying its dead, planting oak trees, and naming the place Acorn. It never argues that the religion is true, only that it holds people together.</p>
+<p class="lede">The Fiction Laboratory pairs science fiction novels with structured reading packets for science and English classes. This is the companion page for this title: where to find the book, every source behind its packet with live links, and any correction made since the packet was printed.</p>
 </div>
+
+<section>
+  <div class="sec-head"><h2>Where to find the book</h2></div>
+    <h3>Borrow it free</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Your public library.</strong> Search the catalog or ask at the desk. It is widely held and it moves, so expect a hold on a popular copy. Interlibrary loan is free if your branch does not carry it.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Libby.</strong> <a href="https://libbyapp.com">libbyapp.com</a>. Library ebooks and audiobooks on a phone or tablet, free with a library card. Both formats are usually available.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Open Library.</strong> <a href="https://openlibrary.org">openlibrary.org</a>. Free borrowing accounts, one copy out at a time, no library card needed.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Your school library.</strong> More likely to hold it than the 1993 publication date suggests. The Parable novels returned to bestseller lists in the 2020s and collections were restocked.</p>
+      </li>
+    </ul>
+    <h3>Read free, legally</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Not the novel.</strong> It was published in 1993 and is in copyright. Anything offering a free download is pirating it. The library is the free route, and for this title it is a good one.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>But Butler&#x27;s own essay is free.</strong> &quot;Positive Obsession&quot;, her account of her childhood and of becoming a writer, is hosted in full by the Library of America. About 2,500 words, and the source for much of what the packet&#x27;s author section says. Worth reading before the novel.</p>
+      </li>
+    </ul>
+    <h3>Buy it</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong><a href="https://bookshop.org/shop/fictionlab">Bookshop.org</a>.</strong> <a href="https://bookshop.org/a/128744/9780446675505">bookshop.org/9780446675505</a>. Orders send the money to independent bookstores rather than to a warehouse. That is the Warner paperback, the edition this packet was read and checked against.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Your local bookshop.</strong> Any independent store can order it within a few days.</p>
+      </li>
+    </ul>
+    <p class="note">Bookshop.org links here are affiliate links. A purchase through one earns the Laboratory a small commission, paid by Bookshop out of its own margin and never added to your price. Borrowing is listed first for a reason, and it is still free.</p>
+    <h3>A note on the shape of it</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>It is a journal, and there is no other narrator.</strong> Lauren Olamina writes dated entries between July 2024 and October 2027, each headed by a short verse from a religion she is inventing as she goes. Everything a reader knows, they know because a teenager wrote it down. Readers who expect a novel to step back and explain the world will wait a long time, because nobody in the book is in a position to.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>It is the hardest book in this library, and a teacher should read it before assigning it.</strong> Sexual violence is constant in the background of the world and is referred to repeatedly, including against a child, though it is almost never depicted on the page. Children die, among them the narrator&#x27;s brothers. There is cannibalism, glimpsed and turned away from, along with drug addiction, arson, and a great deal of ordinary violence done by and to teenagers. None of it is gratuitous or lingered over. In the last third the eighteen-year-old narrator begins a relationship with a man of fifty-seven, an objection the novel puts in his own mouth before a reader can raise it. Decide in advance how you will handle a disclosure.</p>
+      </li>
+    </ul>
+    <h3>Keep reading</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Octavia E. Butler, <em>Parable of the Talents</em>.</strong> The direct sequel, and the book that won her the Nebula.</p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Sources</h2><span class="count">21 in total</span></div>
+  <p class="lede">Everything in the packet is built on real research, and most of it is free. If a claim sparks a question, go to the source and check it yourself. That is the whole idea.</p>
+    <h3>Start here</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Banissy, Michael J., and Jamie Ward. &quot;Mirror-Touch Synesthesia Is Linked with Empathy.&quot; <em>Nature Neuroscience</em>, vol. 10, no. 7, 2007, pp. 815-816.</p>
+        <p class="note">Two pages, and the paper this packet rests on. Ten people with the condition against forty-five controls, and a result narrower than the title suggests. Read the table.</p>
+      </li>
+      <li>
+        <p class="cite">Ward, Jamie, and Michael J. Banissy. &quot;Explaining Mirror-Touch Synesthesia.&quot; <em>Cognitive Neuroscience</em>, vol. 6, nos. 2-3, 2015, pp. 118-147.</p>
+        <p class="note">The field reviewing itself eight years later. The source of the prevalence figure and the two competing explanations, and a good model of an unsettled question in print.</p>
+      </li>
+      <li>
+        <p class="cite">Bell, Gerald D., and Alan N. Basist. &quot;The Global Climate of December 1992-February 1993. Part I: Warm ENSO Conditions Continue in the Tropical Pacific; California Drought Abates.&quot; <em>Journal of Climate</em>, vol. 7, no. 10, 1994, pp. 1581-1605.</p>
+        <p class="note">Not a retrospective: the weather written down as Butler finished the book, and the drought behind the novel&#x27;s water politics ending in the season it was published.</p>
+      </li>
+      <li>
+        <p class="cite">Frank, Deborah A., et al. &quot;Growth, Development, and Behavior in Early Childhood Following Prenatal Cocaine Exposure: A Systematic Review.&quot; <em>JAMA</em>, vol. 285, no. 12, 2001, pp. 1613-1625.</p>
+        <p class="note">The paper that dismantled the crack baby panic, and the reason The Lawbreaker&#x27;s first item is more than a correction. Reviewed together, the studies show damage tracking the child&#x27;s circumstances rather than the drug.</p>
+      </li>
+    </ul>
+    <h3>The novel and its critics</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">Clausen, Daniel D. &quot;Cli-Fi Georgic and Grassroots Mutual Aid in Octavia Butler&#x27;s <em>Parable of the Sower</em>.&quot; <em>Western American Literature</em>, vol. 56, nos. 3-4, 2021-22, pp. 269-286.</p>
+        <p class="note">The reading this packet follows, and the best argument in print against calling the book prophetic. A georgic is writing about work, and Clausen shows how much of this novel is work.</p>
+      </li>
+      <li>
+        <p class="cite">Calvin, Ritch. &quot;An Octavia E. Butler Bibliography (1976-2008).&quot; <em>Utopian Studies</em>, vol. 19, no. 3, 2008, pp. 485-516.</p>
+        <p class="note">Everything she published and much of what was written about her. Use it to settle a publication fact rather than trusting a search result.</p>
+      </li>
+    </ul>
+    <h3>Butler herself</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite">&quot;A Biography of Octavia E. Butler.&quot; <em>Parable of the Sower</em>, by Octavia E. Butler, Open Road Integrated Media, 2012.</p>
+        <p class="note">The publisher&#x27;s life of Butler, at the back of the ebook edition. Source for the two o&#x27;clock alarm, the potato chip inspecting and <em>Devil Girl from Mars</em>. Free with the book.</p>
+      </li>
+      <li>
+        <p class="cite">Butler, Octavia E. &quot;Positive Obsession.&quot; <em>Bloodchild and Other Stories</em>, Seven Stories Press, 1996. First published as &quot;Birth of a Writer,&quot; <em>Essence</em>, vol. 20, May 1989.</p>
+        <p class="note">Butler on her own childhood, and the source for most of The Author: her mother&#x27;s day work, the discarded books, and the two o&#x27;clock alarm in her own words. Free from the Library of America.</p>
+      </li>
+    </ul>
+    <h3>Did not fit the printed page</h3>
+    <ul class="sources">
+      <li>
+        <p class="cite"><strong>Banissy, Michael J., and Jamie Ward. &quot;Mirror-Touch Synesthesia Is Linked with Empathy.&quot;</strong> <em>Nature Neuroscience</em>, vol. 10, no. 7, 2007. <a href="https://nature.com/neuro">nature.com/neuro</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Ward, Jamie, and Michael J. Banissy. &quot;Explaining Mirror-Touch Synesthesia.&quot;</strong> <em>Cognitive Neuroscience</em>, vol. 6, nos. 2-3, 2015. Published with commentaries from other researchers and the authors&#x27; reply, which is worth reading as a record of a live disagreement. <a href="https://tandfonline.com">tandfonline.com</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Bell, Gerald D., and Alan N. Basist. &quot;The Global Climate of December 1992-February 1993. Part I.&quot;</strong> <em>Journal of Climate</em>, vol. 7, no. 10, 1994. <a href="https://journals.ametsoc.org">journals.ametsoc.org</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Clausen, Daniel D. &quot;Cli-Fi Georgic and Grassroots Mutual Aid in Octavia Butler&#x27;s <em>Parable of the Sower</em>.&quot;</strong> <em>Western American Literature</em>, vol. 56, nos. 3-4, 2021-22. <a href="https://jstor.org/stable/10.2307/27117988">jstor.org/stable/10.2307/27117988</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Phillips, Jerry. &quot;The Intuition of the Future: Utopia and Catastrophe in Octavia Butler&#x27;s <em>Parable of the Sower</em>.&quot;</strong> <em>NOVEL: A Forum on Fiction</em>, vol. 35, nos. 2-3, 2002. <a href="https://read.dukeupress.edu">read.dukeupress.edu</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Calvin, Ritch. &quot;An Octavia E. Butler Bibliography (1976-2008).&quot;</strong> <em>Utopian Studies</em>, vol. 19, no. 3, 2008. <a href="https://jstor.org">jstor.org</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Intergovernmental Panel on Climate Change. <em>Climate Change: The IPCC Scientific Assessment</em>, Policymakers Summary.</strong> 1990. What was actually established three years before the novel, including the explicit statement that confidence in regional detail was low. ipcc.ch</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Frank, Deborah A., et al. &quot;Growth, Development, and Behavior in Early Childhood Following Prenatal Cocaine Exposure.&quot;</strong> <em>JAMA</em>, vol. 285, no. 12, 2001. <a href="https://jamanetwork.com">jamanetwork.com</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Octavia E. Butler Papers.</strong> The Huntington Library, San Marino, California. The finding aid is public and searchable even where the material itself is not. <a href="https://huntington.org">huntington.org</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>Butler, Octavia E. &quot;Positive Obsession.&quot;</strong> <em>Bloodchild and Other Stories</em>, 1996; first published as &quot;Birth of a Writer,&quot; <em>Essence</em>, May 1989. Full text free from the Library of America&#x27;s Story of the Week. <a href="https://loa.org">loa.org</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>&quot;A Biography of Octavia E. Butler.&quot;</strong> <em>Parable of the Sower</em>, Open Road Integrated Media, 2012. The publisher&#x27;s life of Butler, printed at the back of the ebook edition and free with it.</p>
+      </li>
+      <li>
+        <p class="cite"><strong>Octavia E. Butler, official site.</strong> Maintained by her estate. Biography, bibliography and awards, and the source for the two o&#x27;clock writing habit quoted in the packet. <a href="https://octaviabutler.com">octaviabutler.com</a></p>
+      </li>
+      <li>
+        <p class="cite"><strong>&quot;Octavia E. Butler Landing.&quot;</strong> NASA named the <em>Perseverance</em> rover&#x27;s Mars landing site after Butler in March 2021. The novel&#x27;s narrator takes a dead Mars astronaut as her model, which makes this a pleasing coincidence and nothing more; it is not a claim of influence. <a href="https://mars.nasa.gov">mars.nasa.gov</a></p>
+      </li>
+    </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Updates and corrections</h2></div>
+  <div class="col">
+    <p class="lede">Nothing yet. When a link here dies or a finding is superseded, the correction is posted here rather than left wrong in print.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="sec-head"><h2>The packet</h2><span class="count">$5 &middot; one time</span></div>
+  <p class="lede">Eight documents as PDFs, in two archives: the complete packet, and a student
+  set holding only the four documents a class should see. Yours to use with every class you
+  teach, this year and every year after. No subscription and no account.</p>
+  <p><a class="buy" href="https://payhip.com/b/vGZVx">Buy the packet &middot; $5</a></p>
+  <p class="note">Checkout is handled by Payhip. Nothing is loaded from them until you follow
+  this link.</p>
+</section>
+
+<p class="stamp">Last reviewed 2026-09-20 &middot; Specimen FL-01.0010</p>
 </div>
+
 <footer>
   <span class="ethos">Open a book. Open the lab.</span>
   <span>&copy; 2026 The Fiction Laboratory &middot; <a href="/privacy.html">Privacy</a> &middot; No Amazon links, ever</span>
